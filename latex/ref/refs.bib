@@ -83,7 +83,6 @@ author = {Mezlini, Aziz M and Smith, Eric JM and Fiume, Marc and Buske, Orion an
 title = {{iReckon: Simultaneous isoform discovery and abundance estimation from RNA-seq data}},
 year = {2012}, 
 doi = {10.1101/gr.142232.112}, 
-abstract ={High throughput RNA sequencing (RNA-seq) promises to revolutionize our understanding of genes and their role in human disease by characterizing the RNA content of tissues and cells. The realization of this promise, however, is conditional on the development of effective computational methods for the identification and quantification of transcripts from incomplete and noisy data. In this paper, we introduce iReckon, a method for simultaneous determination of the isoforms and estimation of their abundances. Our probabilistic approach incorporates multiple biological and technical phenom- ena, including novel isoforms, intron retention, unspliced pre-mRNA, PCR amplification biases, and multi-mapped reads. iReckon utilizes regularized Expectation-Maximization to accurately estimate the abundances of known and novel isoforms. Our results on simulated and real data demonstrate a supe- rior ability to discover novel isoforms with a significantly reduced number of false positive predictions, and our abundance accuracy prediction outmatches that of other state-of-the-art tools. Furthermore we have applied iReckon to two cancer transcriptome datasets, a triple negative breast cancer patient sample and the MCF7 breast cancer cell line, and show that iReckon is able to reconstruct the complex splicing changes that were not previously identified. QT-PCR validations of the isoforms detected in the MCF7 cell line confirmed all of iReckon's predictions and also showed strong agreement (r^2 = 0.94) with the predicted abundances.}, 
 URL = {http://genome.cshlp.org/content/early/2012/11/29/gr.142232.112.abstract}, 
 eprint = {http://genome.cshlp.org/content/early/2012/11/29/gr.142232.112.full.pdf+html}, 
 journal = {Genome Research} 
@@ -113,7 +112,6 @@ number = {50},
 pages = {19867-19872}, 
 year = {2011}, 
 doi = {10.1073/pnas.1113972108}, 
-abstract ={Since the inception of next-generation mRNA sequencing (RNA-Seq) technology, various attempts have been made to utilize RNA-Seq data in assembling full-length mRNA isoforms de novo and estimating abundance of isoforms. However, for genes with more than a few exons, the problem tends to be challenging and often involves identifiability issues in statistical modeling. We have developed a statistical method called “sparse linear modeling of RNA-Seq data for isoform discovery and abundance estimation” (SLIDE) that takes exon boundaries and RNA-Seq data as input to discern the set of mRNA isoforms that are most likely to present in an RNA-Seq sample. SLIDE is based on a linear model with a design matrix that models the sampling probability of RNA-Seq reads from different mRNA isoforms. To tackle the model unidentifiability issue, SLIDE uses a modified Lasso procedure for parameter estimation. Compared with deterministic isoform assembly algorithms (e.g., Cufflinks), SLIDE considers the stochastic aspects of RNA-Seq reads in exons from different isoforms and thus has increased power in detecting more novel isoforms. Another advantage of SLIDE is its flexibility of incorporating other transcriptomic data such as RACE, CAGE, and EST into its model to further increase isoform discovery accuracy. SLIDE can also work downstream of other RNA-Seq assembly algorithms to integrate newly discovered genes and exons. Besides isoform discovery, SLIDE sequentially uses the same linear model to estimate the abundance of discovered isoforms. Simulation and real data studies show that SLIDE performs as well as or better than major competitors in both isoform discovery and abundance estimation. The SLIDE software package is available at https://sites.google.com/site/jingyijli/SLIDE.zip.}, 
 URL = {http://www.pnas.org/content/108/50/19867.abstract}, 
 eprint = {http://www.pnas.org/content/108/50/19867.full.pdf+html}, 
 journal = {Proceedings of the National Academy of Sciences} 
@@ -1030,4 +1028,100 @@ archivePrefix = "arXiv",
   year={2002},
   publisher={Cold Spring Harbor Lab}
 }
+
+
+
+
+
+@misc{greenphrap,
+  title={{Phrap documentation}},
+  author={Green, Phil},
+  url={http://www.phrap.org/phredphrap/phrap.html}
+}
+@article{bonfield1995new,
+  title={{A new DNA sequence assembly program}},
+  author={Bonfield, James K and Smith, Kathryn F and Staden, Rodger},
+  journal={Nucleic Acids Research},
+  volume={23},
+  number={24},
+  pages={4992--4999},
+  year={1995},
+  publisher={Oxford Univ Press}
+}
+@article{kececioglu1995combinatorial,
+  title={{Combinatorial algorithms for DNA sequence assembly}},
+  author={Kececioglu, John D and Myers, Eugene W},
+  journal={Algorithmica},
+  volume={13},
+  number={1-2},
+  pages={7--51},
+  year={1995},
+  publisher={Springer}
+}
+@article{myers1995toward,
+  title={Toward simplifying and accurately formulating fragment assembly},
+  author={Myers, Eugene W},
+  journal={Journal of Computational Biology},
+  volume={2},
+  number={2},
+  pages={275--290},
+  year={1995}
+}
+@article{huang1999cap3,
+  title={{CAP3: A DNA sequence assembly program}},
+  author={Huang, Xiaoqiu and Madan, Anup},
+  journal={Genome research},
+  volume={9},
+  number={9},
+  pages={868--877},
+  year={1999},
+  publisher={Cold Spring Harbor Lab}
+}
+
+
+
+
+
+@article{pevzner2001eulerian,
+  title={An Eulerian path approach to DNA fragment assembly},
+  author={Pevzner, Pavel A and Tang, Haixu and Waterman, Michael S},
+  journal={Proceedings of the National Academy of Sciences},
+  volume={98},
+  number={17},
+  pages={9748--9753},
+  year={2001},
+  publisher={National Acad Sciences}
+}
+
+
+
+@article{pevzner2001eulerian,
+  title={{An Eulerian path approach to DNA fragment assembly}},
+  author={Pevzner, Pavel A and Tang, Haixu and Waterman, Michael S},
+  journal={Proceedings of the National Academy of Sciences},
+  volume={98},
+  number={17},
+  pages={9748--9753},
+  year={2001},
+  publisher={National Acad Sciences}
+}
+
+
+
+
+@article{grabherr2011full,
+  title={{Full-length transcriptome assembly from RNA-Seq data without a reference genome}},
+  author={Grabherr, Manfred G and Haas, Brian J and Yassour, Moran and Levin, Joshua Z and Thompson, Dawn A and Amit, Ido and Adiconis, Xian and Fan, Lin and Raychowdhury, Raktima and Zeng, Qiandong and others},
+  journal={Nature biotechnology},
+  volume={29},
+  number={7},
+  pages={644--652},
+  year={2011},
+  publisher={Nature Publishing Group}
+}
+
+
+
+
+
 

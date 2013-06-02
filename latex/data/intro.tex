@@ -41,6 +41,13 @@ stoeckius2009large, lau2009abundant}
 同时建立测序数量和实际被测序分子的数量间的关系 \cite{marioni2008rna}. 
 这些是 RNA-Seq 在当今被广泛应用的一个主要原因. 
 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/nrg2484-f1.jpg}
+\caption{一般的 RNA-Seq 实验流程 \cite{wang2009rna}}
+\label{intro-rna-seq-ex}
+\end{figure}
+
 \section{RNA-Seq 数据分析方法简介}
 RNA-Seq 通常直接用于对于这些生物问题的研究:
 \begin{itemize}
@@ -58,8 +65,9 @@ RNA-Seq 通常直接用于对于这些生物问题的研究:
 \begin{itemize}
 \item 序列比对 (sequence alignment): 将 RNA-Seq 读段找到其在基因组中的位置
 
-\item 不依赖参考序列的序列拼装 (\textit{de novo} assembly): 
-直接将 RNA-Seq 读段拼装成原转录组的各转录本
+\item 序列拼装: 
+直接将 RNA-Seq 读段拼装成原转录组的各转录本. 若拼装时不依赖已知的参考序列, 
+则成为 \textit{de novo} 拼装 ((\textit{de novo} assembly)). 
 
 \item 各转录本的表达量估计: 用一定的单位表示每个被测样本中转录组里每个转录本的含量, 
 用于在不同的样本之间进行比较
@@ -77,6 +85,28 @@ RNA-Seq 通常直接用于对于这些生物问题的研究:
 \item BLAT \cite{kent2002blat}
 \item TopHat \cite{trapnell2009tophat}
 \end{itemize}
+
+\subsection{序列拼装}
+序列拼装是生物信息学和计算生物学中一个经典的问题, 
+其目的是通过测序的读段恢复出原始的生物序列. 对于序列拼装, 目前人们主要采用一下这两种常用的策略: 
+\begin{itemize}
+\item OLC (overlap-layout-consensus) \cite{greenphrap, bonfield1995new, 
+kececioglu1995combinatorial, myers1995toward, huang1999cap3}
+
+\item de Bruijn 图 \cite{pevzner2001eulerian}
+\end{itemize}
+目前对于 RNA-Seq 数据的拼装主要有这些常用的工具: 
+\begin{itemize}
+\item Cufflinks \cite{cufflinks.2010}: 
+从 RNA-Seq 拼装转录组中的转录本时使用 OLC 策略
+
+\item Trinity \cite{grabherr2011full}: 
+从 RNA-Seq 拼装转录组中的转录本时使用 de Bruijn 图策略
+\end{itemize}
+
+\subsection{各转录本的表达量估计}
+
+\subsection{辨识同一个基因的不同的剪切异构体}
 
 \section{现有 RNA-Seq 数据定量分析方法}
 
