@@ -42,6 +42,41 @@ stoeckius2009large, lau2009abundant}
 这些是 RNA-Seq 在当今被广泛应用的一个主要原因. 
 
 \section{RNA-Seq 数据分析方法简介}
+RNA-Seq 通常直接用于对于这些生物问题的研究:
+\begin{itemize}
+\item 发现新的剪切异构体 \cite{merkin2012evolutionary, wang2010novo, roberts2011identification, wang2010mapsplice}
+
+\item 研究 RNA 序列的对于生物的调控作用 \cite{van2011xuts}
+
+\item 比较不同条件下转录组不同的构成 \cite{trapnell2012differential}
+\end{itemize}
+同时, RNA-Seq 数据还未研究其他生物问题提供了宝贵的原始数据, 
+例如对于生物系统中的网络的研究 \cite{sinicropi2012whole}. 
+
+为了能够通过 RNA-Seq 数据对生物问题有深入的研究, 
+我们通常会对 RNA-Seq 数据用这些方法进行处理:
+\begin{itemize}
+\item 序列比对 (sequence alignment): 将 RNA-Seq 读段找到其在基因组中的位置
+
+\item 不依赖参考序列的序列拼装 (\textit{de novo} assembly): 
+直接将 RNA-Seq 读段拼装成原转录组的各转录本
+
+\item 各转录本的表达量估计: 用一定的单位表示每个被测样本中转录组里每个转录本的含量, 
+用于在不同的样本之间进行比较
+
+\item 辨识同一个基因的不同的剪切异构体: 真核生物中由于选择性剪切同一个基因会产生多个剪切异构体, 
+通过 RNA-Seq 数据在一定条件下可以辨识出一个基因的不同的剪切异构体
+\end{itemize}
+
+\subsection{序列比对}
+经典的序列比对算法包括 Smith-Waterman 算法 \cite{SmithWaterman1981} 和 Needleman-Wunsch 算法 \cite{needleman1970general}. 
+但是由于 Smith-Waterman 算法和 Needleman-Wunsch 算法复杂度偏高, 它们不适用于大规模的数据. 
+目前人们一般采用一些启发式的方法进行序列比对 \cite{isaev2004introduction}. 
+对于将 RNA-Seq 读段比对到其在基因组中的位置, 目前比较常用的工具包括: 
+\begin{itemize}
+\item BLAT \cite{kent2002blat}
+\item TopHat \cite{trapnell2009tophat}
+\end{itemize}
 
 \section{现有 RNA-Seq 数据定量分析方法}
 
