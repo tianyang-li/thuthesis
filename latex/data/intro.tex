@@ -43,7 +43,7 @@ stoeckius2009large, lau2009abundant}
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/nrg2484-f1.jpg}
+\includegraphics[width=\textwidth]{figures/rna-seq-experiment.jpg}
 \caption{一般的 RNA-Seq 实验流程 \cite{wang2009rna}}
 \label{intro-rna-seq-ex}
 \end{figure}
@@ -98,11 +98,25 @@ kececioglu1995combinatorial, myers1995toward, huang1999cap3}
 目前对于 RNA-Seq 数据的拼装主要有这些常用的工具: 
 \begin{itemize}
 \item Cufflinks \cite{cufflinks.2010}: 
-从 RNA-Seq 拼装转录组中的转录本时使用 OLC 策略
+从 RNA-Seq 拼装转录组中的转录本时使用 OLC 策略 (图 \ref{intro-cufflinks-assembly})
 
 \item Trinity \cite{grabherr2011full}: 
-从 RNA-Seq 拼装转录组中的转录本时使用 de Bruijn 图策略
+从 RNA-Seq 拼装转录组中的转录本时使用 de Bruijn 图策略 (图 \ref{intro-trinity-assembly})
 \end{itemize}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[height=0.5\textheight]{figures/cufflinks-assembly.jpg}
+\caption{Cufflinks 序列拼装策略 \cite{cufflinks.2010}}
+\label{intro-cufflinks-assembly}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/trinity-assembly.jpg}
+\caption{Trinity 拼装策略 \cite{grabherr2011full}}
+\label{intro-trinity-assembly}
+\end{figure}
 
 \subsection{各转录本的表达量估计}
 
