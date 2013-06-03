@@ -56,8 +56,6 @@ volume = {28},
 number = {22}, 
 pages = {2914-2921}, 
 year = {2012}, 
-doi = {10.1093/bioinformatics/bts559}, 
-abstract ={Motivation: RNA-Seq uses the high-throughput sequencing technology to identify and quantify transcriptome at an unprecedented high resolution and low cost. However, RNA-Seq reads are usually not uniformly distributed and biases in RNA-Seq data post great challenges in many applications including transcriptome assembly and the expression level estimation of genes or isoforms. Much effort has been made in the literature to calibrate the expression level estimation from biased RNA-Seq data, but the effect of biases on transcriptome assembly remains largely unexplored.Results: Here, we propose a statistical framework for both transcriptome assembly and isoform expression level estimation from biased RNA-Seq data. Using a quasi-multinomial distribution model, our method is able to capture various types of RNA-Seq biases, including positional, sequencing and mappability biases. Our experimental results on simulated and real RNA-Seq datasets exhibit interesting effects of RNA-Seq biases on both transcriptome assembly and isoform expression level estimation. The advantage of our method is clearly shown in the experimental analysis by its high sensitivity and precision in transcriptome assembly and the high concordance of its estimated expression levels with quantitative reverse transcription–polymerase chain reaction data.Availability: CEM is freely available at http://www.cs.ucr.edu/~liw/cem.html.Contact: liw@cs.ucr.eduSupplementary information: Supplementary data are available at Bioinformatics online.}, 
 URL = {http://bioinformatics.oxfordjournals.org/content/28/22/2914.abstract}, 
 eprint = {http://bioinformatics.oxfordjournals.org/content/28/22/2914.full.pdf+html}, 
 journal = {Bioinformatics} 
@@ -100,7 +98,6 @@ URL = {http://www.biomedcentral.com/1471-2105/12/162},
 DOI = {10.1186/1471-2105-12-162},
 PubMedID = {21575225},
 ISSN = {1471-2105},
-ABSTRACT = {BACKGROUND:The development of techniques for sequencing the messenger RNA (RNA-Seq) enables it to study the biological mechanisms such as alternative splicing and gene expression regulation more deeply and accurately. Most existing methods employ RNA-Seq to quantify the expression levels of already annotated isoforms from the reference genome. However, the current reference genome is very incomplete due to the complexity of the transcriptome which hiders the comprehensive investigation of transcriptome using RNA-Seq. Novel study on isoform inference and estimation purely from RNA-Seq without annotation information is desirable.RESULTS:A Nonnegativity and Sparsity constrained Maximum APosteriori (NSMAP) model has been proposed to estimate the expression levels of isoforms from RNA-Seq data without the annotation information. In contrast to previous methods, NSMAP performs identification of the structures of expressed isoforms and estimation of the expression levels of those expressed isoforms simultaneously, which enables better identification of isoforms. In the simulations parameterized by two real RNA-Seq data sets, more than 77% expressed isoforms are correctly identified and quantified. Then, we apply NSMAP on two RNA-Seq data sets of myelodysplastic syndromes (MDS) samples and one normal sample in order to identify differentially expressed known and novel isoforms in MDS disease.CONCLUSIONS:NSMAP provides a good strategy to identify and quantify novel isoforms without the knowledge of annotated reference genome which can further realize the potential of RNA-Seq technique in transcriptome analysis. NSMAP package is freely available at https://sites.google.com/site/nsmapforrnaseq. webcite},
 }
 
 
@@ -155,10 +152,6 @@ volume = {19},
 number = {4}, 
 pages = {521-532}, 
 year = {2009}, 
-doi = {10.1101/gr.074906.107}, 
-abstract ={Comprehensive understanding of functional elements in the human genome will require thorough interrogation and comparison of individual human genomes and genomic structures. Such an endeavor will require improvements in the throughputs and costs of DNA sequencing. Next-generation sequencing platforms have impressively low costs and high throughputs but are limited by short read lengths. An immediate and widely recognized solution to this critical limitation is the paired-end tag (PET) sequencing for various applications, collectively called the PET sequencing strategy, in which short and paired tags are extracted from the ends of long DNA fragments for ultra-high-throughput sequencing. The PET sequences can be accurately mapped to the reference genome, thus demarcating the genomic boundaries of PET-represented DNA fragments and revealing the identities of the target DNA elements. PET protocols have been developed for the analyses of transcriptomes, transcription factor binding sites, epigenetic sites such as histone modification sites, and genome structures. The exclusive advantage of the PET technology is its ability to uncover linkages between the two ends of DNA fragments. Using this unique feature, unconventional fusion transcripts, genome structural variations, and even molecular interactions between distant genomic elements can be unraveled by PET analysis. Extensive use of PET data could lead to efficient assembly of individual human genomes, transcriptomes, and interactomes, enabling new biological and clinical insights. With its versatile and powerful nature for DNA analysis, the PET sequencing strategy has a bright future ahead.}, 
-URL = {http://genome.cshlp.org/content/19/4/521.abstract}, 
-eprint = {http://genome.cshlp.org/content/19/4/521.full.pdf+html}, 
 journal = {Genome Research} 
 }
 
@@ -174,8 +167,6 @@ volume = {25},
 number = {8}, 
 pages = {1026-1032}, 
 year = {2009}, 
-doi = {10.1093/bioinformatics/btp113}, 
-abstract ={Summary: The development of RNA sequencing (RNA-Seq) makes it possible for us to measure transcription at an unprecedented precision and throughput. However, challenges remain in understanding the source and distribution of the reads, modeling the transcript abundance and developing efficient computational methods. In this article, we develop a method to deal with the isoform expression estimation problem. The count of reads falling into a locus on the genome annotated with multiple isoforms is modeled as a Poisson variable. The expression of each individual isoform is estimated by solving a convex optimization problem and statistical inferences about the parameters are obtained from the posterior distribution by importance sampling. Our results show that isoform expression inference in RNA-Seq is possible by employing appropriate statistical methods.Contact: whwong@stanford.eduSupplementary information: Supplementary data are available at Bioinformatics online.}, 
 URL = {http://bioinformatics.oxfordjournals.org/content/25/8/1026.abstract}, 
 eprint = {http://bioinformatics.oxfordjournals.org/content/25/8/1026.full.pdf+html}, 
 journal = {Bioinformatics} 
@@ -192,29 +183,6 @@ volume = {18},
 number = {suppl 1}, 
 pages = {S181-S188}, 
 year = {2002}, 
-doi = {10.1093/bioinformatics/18.suppl_1.S181}, 
-abstract ={Motivation: The traditional approach to annotate alternative splicing
-is to investigate every splicing variant of
-the gene in a case-by-case fashion. This approach, while useful,
-has some serious shortcomings. Recent studies indicate that
-alternative splicing is more frequent than previously thought
-and some genes may produce tens of thousands
-of different transcripts.
-A list of alternatively spliced variants for such genes would be
-difficult to build and hard to analyse. Moreover, such a list
-does not show the relationships between different
-transcripts and does not show the overall structure of all
-transcripts. A better approach would be to represent all
- splicing variants for a given gene in a way that
-captures the relationships between different splicing variants.Results: We introduce the notion of the splicing graph that is a
-natural and convenient representation of all splicing variants.
-The key difference with the existing approaches is that we abandon
-the linear (sequence) representation of each transcript and
-replace it with a graph representation where each transcript
-corresponds to a path in the graph. We further design an algorithm
-to assemble EST reads into the splicing graph rather than
-assembling them into each splicing variant in a case-by-case
-fashion.Availability: http://www-cse.ucsd.edu/groups/bioinformatics/software.htmlContact: sheber@ucsd.eduKeywords: EST assembly; splicing graph; alternative splicing}, 
 URL = {http://bioinformatics.oxfordjournals.org/content/18/suppl_1/S181.abstract}, 
 eprint = {http://bioinformatics.oxfordjournals.org/content/18/suppl_1/S181.full.pdf+html}, 
 journal = {Bioinformatics} 
@@ -251,7 +219,6 @@ title={{Ab initio reconstruction of cell type-specific transcriptomes in mouse r
     volume = {7},
     url = {http://dx.doi.org/10.1371%2Fjournal.pone.0046679},
     pages = {e46679},
-    abstract = {<p>The recent development of third generation sequencing (TGS) generates much longer reads than second generation sequencing (SGS) and thus provides a chance to solve problems that are difficult to study through SGS alone. However, higher raw read error rates are an intrinsic drawback in most TGS technologies. Here we present a computational method, LSC, to perform error correction of TGS long reads (LR) by SGS short reads (SR). Aiming to reduce the error rate in homopolymer runs in the main TGS platform, the PacBio® <italic>RS</italic>, LSC applies a homopolymer compression (HC) transformation strategy to increase the sensitivity of SR-LR alignment without scarifying alignment accuracy. We applied LSC to 100,000 PacBio long reads from human brain cerebellum RNA-seq data and 64 million single-end 75 bp reads from human brain RNA-seq data. The results show LSC can correct PacBio long reads to reduce the error rate by more than 3 folds. The improved accuracy greatly benefits many downstream analyses, such as directional gene isoform detection in RNA-seq study. Compared with another hybrid correction tool, LSC can achieve over double the sensitivity and similar specificity.</p>},
     number = {10},
     doi = {10.1371/journal.pone.0046679}
 }        
@@ -267,7 +234,6 @@ number = {8},
 pages = {1336-1346}, 
 year = {2008}, 
 doi = {10.1101/gr.077065.108}, 
-abstract ={In comparison to genotypes, knowledge about haplotypes (the combination of alleles present on a single chromosome) is much more useful for whole-genome association studies and for making inferences about human evolutionary history. Haplotypes are typically inferred from population genotype data using computational methods. Whole-genome sequence data represent a promising resource for constructing haplotypes spanning hundreds of kilobases for an individual. In this article, we propose a Markov chain Monte Carlo (MCMC) algorithm, HASH (haplotype assembly for single human), for assembling haplotypes from sequenced DNA fragments that have been mapped to a reference genome assembly. The transitions of the Markov chain are generated using min-cut computations on graphs derived from the sequenced fragments. We have applied our method to infer haplotypes using whole-genome shotgun sequence data from a recently sequenced human individual. The high sequence coverage and presence of mate pairs result in fairly long haplotypes (N50 length ∼ 350 kb). Based on comparison of the sequenced fragments against the individual haplotypes, we demonstrate that the haplotypes for this individual inferred using HASH are significantly more accurate than the haplotypes estimated using a previously proposed greedy heuristic and a simple MCMC method. Using haplotypes from the HapMap project, we estimate the switch error rate of the haplotypes inferred using HASH to be quite low, ∼1.1%. Our Markov chain Monte Carlo algorithm represents a general framework for haplotype assembly that can be applied to sequence data generated by other sequencing technologies. The code implementing the methods and the phased individual haplotypes can be downloaded from http://www.cse.ucsd.edu/users/vibansal/HASH/.}, 
 URL = {http://genome.cshlp.org/content/18/8/1336.abstract}, 
 eprint = {http://genome.cshlp.org/content/18/8/1336.full.pdf+html}, 
 journal = {Genome Research} 
@@ -297,8 +263,7 @@ journal={Computational Biology and Bioinformatics, IEEE/ACM Transactions on}, ti
 year={2006}, 
 volume={3}, 
 number={3}, 
-pages={303-311}, 
-keywords={biology computing;cellular biophysics;genetics;molecular biophysics;polynomial approximation;APX-hard problem;constant-approximation algorithm;fixed parameter tractability;genotypes;haplotype inference;haplotype sharing;input genotypes;parsimony haplotyping;polynomial approximation algorithm;Algorithm design and analysis;Bioinformatics;Biological cells;DNA;Drugs;Genetics;Genomics;Medical conditions;Polynomials;Sequences;Biology and genetics;analysis of algorithms and problem complexity.;graph algorithms}, 
+pages={303-311},  
 doi={10.1109/TCBB.2006.40}, 
 ISSN={1545-5963},}
 
@@ -1182,6 +1147,15 @@ archivePrefix = "arXiv",
 
 
 
+
+@inproceedings{peng2011t,
+  title={{T-IDBA: A de novo iterative de Bruijn graph assembler for transcriptome}},
+  author={Peng, Yu and Leung, Henry CM and Yiu, SM and Chin, Francis YL},
+  booktitle={Research in Computational Molecular Biology},
+  pages={337--338},
+  year={2011},
+  organization={Springer}
+}
 
 
 
