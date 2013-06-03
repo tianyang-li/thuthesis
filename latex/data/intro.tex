@@ -148,7 +148,7 @@ RNA-Seq 技术的发展大大促进了人们对于真核生物中选择性剪切
 \label{intro-cufflinks-assembly}
 \end{figure}
 
-\section{现有 RNA-Seq 数据定量分析方法}
+\section{现有基于 RNA-Seq 数据的转录本表达量估计和剪切异构体辨识方法}
 
 \subsection{RNA-Seq 数据定量分析的一般模型}
 \label{rna-seq-general-model}
@@ -169,7 +169,8 @@ $I = \bigcup_{g \in G} I_g$ 是所有的剪切异构体所构成的集合.
 此处为了方便描述, 我们也将无选择性剪切的基因所对应的转录本称作是它的剪切异构体. 
 
 \item $\theta_i \geq 0$, $i \in I$ 是剪切异构体 $i$ 的表达量, 
-它们满足 $\sum_{i \in I} \theta_i = 1$. 
+它们满足 $\sum_{i \in I} \theta_i = 1$. 在该模型下, 
+此处定义的表达量和实际中 RPKM 表达的表达量成正比 \cite{cufflinks.2010}. 
 
 \item $q(p, i)$ 表示对于一个剪切异构体 $i \in I$, 
 来自 $i$ 的一个读段的起始位置 (5' 段) 是 $p$ 的概率. 
@@ -201,8 +202,22 @@ q(\text{$r$ 比对到 $i$ 上的起始位置},i) & \text{当 $r$ 能比对到 $i
 
 由以上我们可以得到观察到所有读段 $R$ 的似然函数: 
 \begin{equation}
+\label{rna-seq-general-likelihood}
 L(R) = \prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 \end{equation}
+
+\subsection{转录本表达量估计和剪切异构体辨识}
+在已知所有剪切异构体的集合 $I$ 时, 通过式 \eqref{rna-seq-general-likelihood} 中的似然函数, 
+我们可以对各剪切异构体的表达量进行估计. 
+Cufflinks 是在 RNA-Seq 实验中一个常用的工具 (图 \ref{intro-cufflinks-assembly}). 
+
+当我们不知道剪切异构体的集合 $I$ 时, 
+我们可以通过过优化通过式 \eqref{rna-seq-general-likelihood} 中的似然函数, 
+或者其他的目标函数, 在进行剪切异构体集合 $I$ 的辨识的同时对各转录本的表达量进行估计. 
+
+下面我们对若干已发表的通过 RNA-Seq 数据进行转录本表达量估计和剪切异构体辨识的工具进行介绍. 
+
+
 
 
 
