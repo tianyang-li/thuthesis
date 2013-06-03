@@ -129,7 +129,6 @@ PAGES = {S15},
 URL = {http://www.biomedcentral.com/1471-2105/14/S5/S15},
 DOI = {10.1186/1471-2105-14-S5-S15},
 ISSN = {1471-2105},
-ABSTRACT = {BACKGROUND:Through transcription and alternative splicing, a gene can be transcribed into different RNA sequences (isoforms), depending on the individual, on the tissue the cell is in, or in response to some stimuli. Recent RNA-Seq technology allows for new high-throughput ways for isoform identification and quantification based on short reads, and various methods have been put forward for this non-trivial problem.RESULTS:In this paper we propose a novel radically different method based on minimum-cost network flows. This has a two-fold advantage: on the one hand, it translates the problem as an established one in the field of network flows, which can be solved in polynomial time, with different existing solvers; on the other hand, it is general enough to encompass many of the previous proposals under the least sum of squares model. Our method works as follows: in order to find the transcripts which best explain, under a given fitness model, a splicing graph resulting from an RNA-Seq experiment, we find a min-cost flow in an offset flow network, under an equivalent cost model. Under very weak assumptions on the fitness model, the optimal flow can be computed in polynomial time. Parsimoniously splitting the flow back into few path transcripts can be done with any of the heuristics and approximations available from the theory of network flows. In the present implementation, we choose the simple strategy of repeatedly removing the heaviest path.CONCLUSIONS:We proposed a new very general method based on network flows for a multiassembly problem arising from isoform identification and quantification with RNA-Seq. Experimental results on prediction accuracy show that our method is very competitive with popular tools such as Cufflinks and IsoLasso. Our tool, called Traph (Transcrips in gRAPHs), is available at: http://www.cs.helsinki.fi/gsa/traph/ webcite.},
 }
 
 
@@ -1119,6 +1118,67 @@ archivePrefix = "arXiv",
   year={2011},
   publisher={Nature Publishing Group}
 }
+
+
+
+
+@article{gilbert1978genes,
+  title={{Why genes in pieces?}},
+  author={Gilbert, Walter},
+  journal={Nature},
+  volume={271},
+  number={5645},
+  pages={501},
+  year={1978}
+}
+@article{rosenfeld1982calcitonin,
+  title={{Calcitonin mRNA polymorphism: peptide switching associated with alternative RNA splicing events}},
+  author={Rosenfeld, Michael G and Lin, Chijen R and Amara, Susan G and Stolarsky, Lana and Roos, Bernard A and Ong, Estelita S and Evans, Ronald M},
+  journal={Proceedings of the National Academy of Sciences},
+  volume={79},
+  number={6},
+  pages={1717--1721},
+  year={1982},
+  publisher={National Acad Sciences}
+}
+@article{early1980two,
+  title={{Two mRNAs can be produced from a single immunoglobulin $\mu$ gene by alternative RNA processing pathways}},
+  author={Early, P and Rogers, J and Davis, M and Calame, K and Bond, M and Wall, R and Hood, L},
+  journal={Cell},
+  volume={20},
+  number={2},
+  pages={313--319},
+  year={1980},
+  publisher={Elsevier}
+}
+@article{citeulike:447573,
+    address = {Department of Biology, Massachusetts Institute of Technology, Cambridge 02139.},
+    author = {Sharp, P. A.},
+    day = {17},
+    issn = {0092-8674},
+    journal = {Cell. },
+    keywords = {as, review},
+    month = jun,
+    number = {6},
+    pages = {805--815},
+    pmid = {7516265},
+    posted-at = {2005-12-23 06:33:17},
+    priority = {2},
+    title = {{Split genes and RNA splicing.}},
+    volume = {77},
+    year = {1994}
+}
+@article{modrek2002genomic,
+  title={{A genomic view of alternative splicing}},
+  author={Modrek, Barmak and Lee, Christopher},
+  journal={Nature Genetics},
+  volume={30},
+  number={1},
+  pages={13--19},
+  year={2002},
+  publisher={Nature Publishing Group}
+}
+
 
 
 

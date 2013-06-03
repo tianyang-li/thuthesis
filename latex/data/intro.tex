@@ -69,10 +69,10 @@ RNA-Seq 通常直接用于对于这些生物问题的研究:
 直接将 RNA-Seq 读段拼装成原转录组的各转录本. 若拼装时不依赖已知的参考序列, 
 则成为 \textit{de novo} 拼装 ((\textit{de novo} assembly)). 
 
-\item 各转录本的表达量估计: 用一定的单位表示每个被测样本中转录组里每个转录本的含量, 
+\item 转录本的表达量估计: 用一定的单位表示每个被测样本中转录组里每个转录本的含量, 
 用于在不同的样本之间进行比较
 
-\item 辨识同一个基因的不同的剪切异构体: 真核生物中由于选择性剪切同一个基因会产生多个剪切异构体, 
+\item 通过真核生物 RNA-Seq 数据辨识同一个基因的剪切异构体: 真核生物中由于选择性剪切同一个基因会产生多个剪切异构体, 
 通过 RNA-Seq 数据在一定条件下可以辨识出一个基因的不同的剪切异构体
 \end{itemize}
 
@@ -118,9 +118,29 @@ de Bruijn 图策略 (图 \ref{intro-trinity-assembly})
 \label{intro-trinity-assembly}
 \end{figure}
 
-\subsection{各转录本的表达量估计}
+\subsection{转录本的表达量估计}
+通过量化转录组中各转录本, 从实验数据中估计其表达量, 
+我们可以对生物系统中的结构和过程有更好的量化的认识. 
+RNA-Seq 技术的发展对于转录本表达量的估计有很大的帮助. 
+在 RNA-Seq 实验中, 
+通常使用 RPKM (reads per kilobase per million reads sequenced) 
+\cite{mortazavi2008mapping} 作为一个转录本表达量的单位. 
+目前在 RNA-Seq 实验中通常使用的转录本表达量估计的工具包括: 
+\begin{itemize}
+\item Cufflinks \cite{cufflinks.2010} (图 \ref{intro-cufflinks-abundance})
+\end{itemize}
 
-\subsection{辨识同一个基因的不同的剪切异构体}
+\begin{figure}[!t]
+\centering
+\includegraphics[height=0.5\textheight]{figures/cufflinks-abundance.jpg}
+\caption{Cufflinks 对转录本的表达量的估计 \cite{cufflinks.2010}}
+\label{intro-cufflinks-abundance}
+\end{figure}
+
+\subsection{通过真核生物 RNA-Seq 数据辨识同一个基因的剪切异构体}
+经过多年的研究, 人们认识到真核生物的同一个基因会有多个剪切异构体 
+\cite{gilbert1978genes, rosenfeld1982calcitonin, early1980two, 
+citeulike:447573, modrek2002genomic}. 
 
 \section{现有 RNA-Seq 数据定量分析方法}
 
