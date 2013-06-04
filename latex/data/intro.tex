@@ -169,8 +169,8 @@ $I = \bigcup_{g \in G} I_g$ 是所有的剪切异构体所构成的集合.
 此处为了方便描述, 我们也将无选择性剪切的基因所对应的转录本称作是它的剪切异构体. 
 
 \item $\theta_i \geq 0$, $i \in I$ 是剪切异构体 $i$ 的表达量, 
-它们满足 $\sum_{i \in I} \theta_i = 1$. 在该模型下, 
-此处定义的表达量和实际中 RPKM 表达的表达量成正比 \cite{cufflinks.2010}. 
+它们满足 $\sum_{i \in I} \theta_i = 1$. 记 $\theta_I = {\theta_i | i \in I}$.
+在该模型下, 此处定义的表达量和实际中 RPKM 表达的表达量成正比 \cite{cufflinks.2010}. 
 
 \item $q(p, i)$ 表示对于一个剪切异构体 $i \in I$, 
 来自 $i$ 的一个读段的起始位置 (5' 段) 是 $p$ 的概率. 
@@ -242,6 +242,27 @@ Cufflinks 通过在读段之间定义一个序,
 并且在这个序构成的二分图上计算最小花费最大匹配来构成所求的最小路径覆盖. 
 在定义该二分图各边的权重时, Cufflinks 采用了 \onlinecite{wang2008alternative} 
 的方法启发式地定义权重. 
+
+\subsubsection{NSMAP, CEM, iReckon, 和 Montebello}
+NSMAP, CEM, iReckon, 和 Montebello 这 4 个工具是同时进行剪切异构体的辨识和转录本表达量的估计的. 
+由于一个基因可能的剪切异构体的个数相当的多, NSMAP, CEM, 和 Montebello 
+采用了带惩罚项的似然函数进行剪切异构体的辨识和转录本表达量的估计. 
+其具体做法是对式 \eqref{rna-seq-general-likelihood} 中的似然函数增加一个惩罚项, 
+变为求剪切异构体的集合 $I$ 和它们的表达量 $\theta_I$ 使得
+\begin{equation}
+e^{-\Phi} L(R) = 
+e^{-\Phi}\prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
+\end{equation}
+最大化, 其中 $\Phi$ 是一个惩罚项, 其中使用以下这些方法等: 
+\begin{itemize}
+\item Lasso \cite{tibshirani1996regression}: 
+$\Phi = \lambda \sum_{i \in I} |\theta_i|$, $\lambda > 0$ 
+
+\item BIC \cite{BIC.Schwarz_1978}: 
+$\Phi = \frac{|I|}{2} \log |R|$
+\end{itemize}
+
+\subsubsection{IsoLasso 和 SLIDE}
 
 
 
