@@ -254,7 +254,7 @@ NSMAP, CEM, iReckon, 和 Montebello 这 4 个工具是同时进行剪切异构�
 e^{-\Phi} L(R) = 
 e^{-\Phi}\prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 \end{equation}
-最大化, 其中 $\Phi$ 是一个惩罚项, 其中使用以下这些方法等: 
+最大化, 其中 $\Phi$ 是一个惩罚项, 可以使用以下这些方法等: 
 \begin{itemize}
 \item Lasso \cite{tibshirani1996regression}: 
 \[
@@ -267,6 +267,8 @@ e^{-\Phi}\prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 \Phi = \frac{|I|}{2} \log |R|
 \]
 \end{itemize}
+NSMAP 和 iReckon 均使用的是 Lasso, 
+而 CEM 则使用了一个 Dirichlet 分布作为先验概率. 
 NSMAP, CEM, 和 iReckon 在计算时采用的策略均是枚举所有剪切异构体集合 $I$ 中的可能的剪切异构体. 
 由于一个基因可能的剪切异构体的个数是随它的外显子的个数的增长按指数规律增长的, 
 所以 NSMAP, CEM, 和 iReckon 在计算时无法处理外显子较多的基因. 
@@ -282,6 +284,18 @@ IsoLasso 和 SLIDE 采用的策略与 \ref{intro-nsmap-cem-ireckon-montebllo}
 对每个区域计算读段的覆盖 (coverage), 
 并根据此通过线性回归同时进行剪切异构体的辨识和转录本表达量的估计. 
 这里对 IsoLasso 和 SLIDE 中所用的数学模型进行简单的介绍. 
+通过 RNA-Seq 数据我们可以计算得每一个基因中的每一个外显子的覆盖 $c$, 
+IsoLasso 和 SLIDE 均假设该外显子的覆盖 $c$ 是所有包含该外显子的剪切异构体的表达量之和, 
+即在理想情况下应有
+\begin{equation}
+\label{outline-isolasso-slide}
+c = \epsilon + \sum_{i \in \text{所有包含该外显子的剪切异构体}} e_i
+\end{equation}
+其中 $e_i$ 是剪切异构体 $i$ 的表达量 (这里的 $e_i$ 与之前所描述的 $\theta_i$ 不同), 
+$\epsilon$ 是一个期望 $\operatorname[E] = 0$ 的噪声. 
+IsoLasso 和 SLIDE 对目前转录组中所有的基因所包含的外显子进行类似 
+式 \eqref{outline-isolasso-slide} 中的处理, 通过线性回归估计每一个剪切异构体的表达量. 
+注意到通过该方法计算得的表达量值和用 RPKM 单位表达的表达量是成正比的. 
 由于一个基因可能的剪切异构体的个数相当的多, 
 在线性回归时 IsoLasso 和 SLIDE 均采用了 Lasso 用于正则化. 
 与 \ref{intro-nsmap-cem-ireckon-montebllo} 中介绍的 NSMAP, CEM, 和 iReckon 类似, 
