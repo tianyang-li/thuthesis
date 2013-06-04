@@ -245,7 +245,7 @@ Cufflinks 通过在读段之间定义一个序,
 
 \subsubsection{NSMAP, CEM, iReckon, 和 Montebello}
 NSMAP, CEM, iReckon, 和 Montebello 这 4 个工具是同时进行剪切异构体的辨识和转录本表达量的估计的. 
-由于一个基因可能的剪切异构体的个数相当的多, NSMAP, CEM, 和 Montebello 
+由于一个基因可能的剪切异构体的个数相当的多, NSMAP, CEM, iReckkkon, 和 Montebello 
 采用了带惩罚项的似然函数进行剪切异构体的辨识和转录本表达量的估计. 
 其具体做法是对式 \eqref{rna-seq-general-likelihood} 中的似然函数增加一个惩罚项, 
 变为求剪切异构体的集合 $I$ 和它们的表达量 $\theta_I$ 使得
@@ -261,6 +261,11 @@ $\Phi = \lambda \sum_{i \in I} |\theta_i|$, $\lambda > 0$
 \item BIC \cite{BIC.Schwarz_1978}: 
 $\Phi = \frac{|I|}{2} \log |R|$
 \end{itemize}
+NSMAP, CEM, 和 iReckon 在计算时采用的策略均是枚举所有剪切异构体集合 $I$ 中的可能的剪切异构体. 
+由于一个基因可能的剪切异构体的个数是随它的外显子的个数的增长按指数规律增长的, 
+所以 NSMAP, CEM, 和 iReckon 在计算时无法处理外显子较多的基因. 
+Montebello 则是采用一个 MCMC (Markov chian Monte Carlo) \cite{robert2004monte} 的策略, 
+在计算的过程中避免了枚举一个基因所有可能的剪切异构体. 
 
 \subsubsection{IsoLasso 和 SLIDE}
 
