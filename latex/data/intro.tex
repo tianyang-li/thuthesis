@@ -214,9 +214,34 @@ Cufflinks 是在 RNA-Seq 实验中一个常用的工具 (图 \ref{intro-cufflink
 当我们不知道剪切异构体的集合 $I$ 时, 
 我们可以通过过优化通过式 \eqref{rna-seq-general-likelihood} 中的似然函数, 
 或者其他的目标函数, 在进行剪切异构体集合 $I$ 的辨识的同时对各转录本的表达量进行估计. 
+已发表的方法包括: 
+\begin{itemize}
+\item NSMAP \cite{nsmap.21575225}
+
+\item IsoLasso \cite{isolasso.recomb}
+
+\item CEM \cite{Li15112012}
+
+\item iReckon \cite{Mezlini29112012}
+
+\item SLIDE \cite{Li13122011}
+
+\item Montebello \cite{Hiller.Montebello}
+\end{itemize}
 
 下面我们对若干已发表的通过 RNA-Seq 数据进行转录本表达量估计和剪切异构体辨识的工具进行介绍. 
 
+\subsubsection{Cufflinks}
+Cufflinks 对于剪切异构体的辨识和转录本表达量的估计如图 \ref{intro-cufflinks-assembly} 
+和图 \ref{intro-cufflinks-abundance} 所示. 
+Cufflinks 是分开处理剪切异构体的辨识和转录本表达量的估计这两个流程的. 
+对于剪切异构体的辨识, Cufflinks 在 读段所构成的剪切图 
+(splicing graph) \cite{Heber01072002} 寻找一个最小的路径覆盖, 
+但是 Cufflinks 并不是直接在剪切图上进行操作的. 
+Cufflinks 通过在读段之间定义一个序, 
+并且在这个序构成的二分图上计算最小花费最大匹配来构成所求的最小路径覆盖. 
+在定义该二分图各边的权重时, Cufflinks 采用了 \onlinecite{wang2008alternative} 
+的方法启发式地定义权重. 
 
 
 
