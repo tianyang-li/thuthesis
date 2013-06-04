@@ -209,7 +209,6 @@ L(R) = \prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 \subsection{转录本表达量估计和剪切异构体辨识}
 在已知所有剪切异构体的集合 $I$ 时, 通过式 \eqref{rna-seq-general-likelihood} 中的似然函数, 
 我们可以对各剪切异构体的表达量进行估计. 
-Cufflinks 是在 RNA-Seq 实验中一个常用的工具 (图 \ref{intro-cufflinks-assembly}). 
 
 当我们不知道剪切异构体的集合 $I$ 时, 
 我们可以通过过优化通过式 \eqref{rna-seq-general-likelihood} 中的似然函数, 
@@ -244,6 +243,8 @@ Cufflinks 通过在读段之间定义一个序,
 的方法启发式地定义权重. 
 
 \subsubsection{NSMAP, CEM, iReckon, 和 Montebello}
+\label{intro-nsmap-cem-ireckon-montebllo}
+
 NSMAP, CEM, iReckon, 和 Montebello 这 4 个工具是同时进行剪切异构体的辨识和转录本表达量的估计的. 
 由于一个基因可能的剪切异构体的个数相当的多, NSMAP, CEM, iReckkkon, 和 Montebello 
 采用了带惩罚项的似然函数进行剪切异构体的辨识和转录本表达量的估计. 
@@ -256,10 +257,15 @@ e^{-\Phi}\prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 最大化, 其中 $\Phi$ 是一个惩罚项, 其中使用以下这些方法等: 
 \begin{itemize}
 \item Lasso \cite{tibshirani1996regression}: 
-$\Phi = \lambda \sum_{i \in I} |\theta_i|$, $\lambda > 0$ 
+\[
+\Phi = \lambda \sum_{i \in I} |\theta_i|
+\]
+其中 $\lambda > 0$
 
 \item BIC \cite{BIC.Schwarz_1978}: 
-$\Phi = \frac{|I|}{2} \log |R|$
+\[
+\Phi = \frac{|I|}{2} \log |R|
+\]
 \end{itemize}
 NSMAP, CEM, 和 iReckon 在计算时采用的策略均是枚举所有剪切异构体集合 $I$ 中的可能的剪切异构体. 
 由于一个基因可能的剪切异构体的个数是随它的外显子的个数的增长按指数规律增长的, 
@@ -268,9 +274,20 @@ Montebello 则是采用一个 MCMC (Markov chian Monte Carlo) \cite{robert2004mo
 在计算的过程中避免了枚举一个基因所有可能的剪切异构体. 
 
 \subsubsection{IsoLasso 和 SLIDE}
-
-
-
+IsoLasso 和 SLIDE 也是同时进行剪切异构体的辨识和转录本表达量的估计的. 
+IsoLasso 和 SLIDE 采用的策略与 \ref{intro-nsmap-cem-ireckon-montebllo} 
+中提到的若干工具相似, 但是 IsoLasso 和 SLIDE 并不是对式 
+\eqref{rna-seq-general-likelihood} 中的似然函数进行最大化. 
+这两个工具均通过将一个基因按该基因的每个外显子分为若干个区域, 
+对每个区域计算读段的覆盖 (coverage), 
+并根据此通过线性回归同时进行剪切异构体的辨识和转录本表达量的估计. 
+这里对 IsoLasso 和 SLIDE 中所用的数学模型进行简单的介绍. 
+由于一个基因可能的剪切异构体的个数相当的多, 
+在线性回归时 IsoLasso 和 SLIDE 均采用了 Lasso 用于正则化. 
+与 \ref{intro-nsmap-cem-ireckon-montebllo} 中介绍的 NSMAP, CEM, 和 iReckon 类似, 
+IsoLasso 和 SLIDE 在计算时采用的策略均是枚举所有剪切异构体集合 $I$ 中的可能的剪切异构体. 
+由于一个基因可能的剪切异构体的个数是随它的外显子的个数的增长按指数规律增长的, 
+所以 IsoLasso 和 SLIDE 在计算时无法处理外显子较多的基因. 
 
 
 
