@@ -9,13 +9,33 @@
 (\ref{intro-rna-seq-tools-summary}) 仍然存在不足. 
 其中包括: 
 \begin{itemize}
-\item 辨识基因的剪切异构体复杂度高
+\item 辨识基因的剪切异构体复杂度高 (真核生物 RNA-Seq 数据)
+
+\item 当有两个转录本其中一个转录本的一端位于另一个转录本的中间时 
+(图 \ref{disc-human-gene-alternative-start-1}), 
+目前没有有效的方法通过 RNA-Seq 数据对这两个转录本进行区分
 
 \item 对于原核生物, 尤其是原核生物中的操纵子, 的分析方法仍然没有较规范的分析方法 
+\cite{mcclure2013computational} (图 \ref{disc-bacteria-operons-1})
 
 \item 估计转录本表达量时仍无系统的方法处理 RNA-Seq 数据中读段分布的不均性, 
 以及转录本序列的组成带来的误差 \cite{oshlack2009transcript, jones2012new} 
 \end{itemize}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/disc/disc-human-gene-alternative-start-1.png}
+\caption{人的基因组中出现的一个转录本的一端位于另一个转录本的中间的现象}
+\label{disc-human-gene-alternative-start-1}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/disc/disc-bacteria-operons-1.png}
+\caption{\onlinecite{giannoukos2012efficient} 中的 RNA-Seq 数据, 
+其中可以看见多个基因构成的操纵子}
+\label{disc-bacteria-operons-1}
+\end{figure}
 
 \section{未来 RNA-Seq 数据的定量分析方法的工作}
 
@@ -34,5 +54,8 @@
 \subsubsection{与真核生物 RNA-Seq 数据的比较} %% 计算上比原核生物更为简单, 模型相似
 
 \subsubsection{RNA-PET 测序技术} %% 序列比对, 拼装
+
+
+
 
 
