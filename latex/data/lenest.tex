@@ -18,7 +18,7 @@
 所以对于通过 RNA-Seq 数据直接估计转录本的长度是有需求的. 
 
 \section{理论分析}
-在通过 RNA-Seq 数据估计转录本的时候我们对 RNA-Seq 数据做如下的假设: 
+在通过 RNA-Seq 数据估计转录本的时候我们对 RNA-Seq 数据做如下的假设以简化模型: 
 \begin{itemize}
 \item 所有的读段在原转录本上的位置的分布都是独立的
 
@@ -26,6 +26,23 @@
 
 \item 读段的 5' 段位置 (以下称之为起始位置) 在原转录本上的分布是均匀的
 \end{itemize}
+
+\begin{thm}
+假设 $X_1$, $X_2$, ..., $X_N$ 是来自定义在 
+${1, 2, ..., L}$, $L \in \mathbb{Z}^+$ 的均匀分布, 
+即 
+\[
+P(X = i) =  \begin{cases}
+\frac{1}{L} & \text{ 当 } 1 \leq i \leq L \\
+0 & \text{ 其余情况 }
+\end{cases}
+\]
+则对于 $L$ 的最小方差无偏估计 $\hat{L}$ 为
+\begin{equation}
+\hat{L} = 
+\end{equation}
+其中 $X_{(N)} = \max_{1 \leq i \leq N} X_i$. 
+\end{thm}
 
 \begin{thm}
 假设

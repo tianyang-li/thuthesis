@@ -1,4 +1,9 @@
 \chapter{讨论}
+在这一章中我们对 \ref{chap-lenest} 中通过 RNA-Seq 数据估计转录本的长度的方法, 
+\ref{chap-rna-seq-nonunif} 中对于 RNA-Seq 数据分布的不均匀性的描述, 
+\ref{chap-rna-seq-nonunif} 中真核生物 RNA-Seq 数据估计基因的转录组问题是 NP 难的阐述, 
+以及现有的 RNA-Seq 数据分析方法, 
+和 RNA-Seq 数据分析方法的未来的发展方向进行讨论. 
 
 \section{通过 RNA-Seq 数据估计转录本的长度}
 在 \ref{chap-lenest} 的分析中我们只对单端等长读段测序数据进行了考虑, 
@@ -6,6 +11,11 @@
 在实际应用中可以只对双端数据考虑等长的在原转录本的 5' (或者 3') 端, 
 或者长度不均的读段考虑等长的在原转录本的 5' (或者 3') 端, 
 从而可以用 \ref{chap-lenest} 中的方法进行分析. 
+
+此外, \ref{chap-lenest} 中所介绍的方法并没有考虑 RNA-Seq 
+数据中读段分布受转录本序列以及转录本长度等因素造成的分布不均匀性. 
+另外, \ref{chap-lenest} 中所介绍的方法也未考虑读段分布的非独立性. 
+这些问题都是需要进一步继续的研究来解决的. 
 
 \section{通过 RNA-Seq 数据估计基因的转录组}
 
