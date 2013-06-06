@@ -203,6 +203,24 @@ $L$ 是转录本的有效长度 ($\text{转录本实际长度} -R+1$).
 P(\text{观察到一个连续段其长度} \leq \text{目前的连续段 } |\text{ 目前的连续段的覆盖})
 \end{equation}
 
+为了更深入地了解式 \eqref{lenest-one-contig-one-isof-prob-decription} 中的概率, 
+我们在这里分析
+\begin{equation}
+\label{lenest-one-cont-prob-distr}
+P(\text{连续段长度} = l | \text{目前的连续段的覆盖} \lambda)
+\end{equation}
+即给定覆盖, 连续段的长度的分布. 
+下面为方便讨论我们记
+\begin{equation}
+p_n =  \frac{P(\text{连续段长度} = n+R-1 | \text{目前的连续段的覆盖} \lambda)}{e^{-(R-1)\lambda}}
+\end{equation}
+则
+\begin{align}
+p_n &= 0 & n &\leq 0 \\
+p_1 &= 1 & & \\
+p_{n+R} &= \sum_{i=1}^{R-1} (1-e^{-\lambda}) e^{-(R-1-i)\lambda} p_{n+i} & n &\geq 2-R
+\end{align}
+
 为了估计式 \eqref{lenest-one-contig-one-isof-prob-decription} 中的概率, 
 在这里我们先介绍一个改进的 Lander-Waterman 公式 (定理 \ref{discrete-lander-waterman}), 
 原先的 Lander-Waterman 公式 \cite{lander1988genomic} 在推导中使用了一些近似, 
@@ -210,10 +228,13 @@ P(\text{观察到一个连续段其长度} \leq \text{目前的连续段 } |\tex
 
 \begin{thm}[改进的 Lander-Waterman 公式]
 \label{discrete-lander-waterman}
-假设
+在之前的 Poisson 模型下, 一个连续段的期望的长度
+\begin{equation}
+\operatorname{E}[\text{一个连续段的长度}] = \frac{e^{R\lambda} - 1}{e^\lambda - 1} 
+\end{equation}
 \end{thm}
 
-下面是定理 \ref{discrete-lander-waterman} 的证明. 
+下面我们给出定理 \ref{discrete-lander-waterman} 的证明. 
 
 \begin{proof}
 \end{proof}
