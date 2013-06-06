@@ -137,9 +137,9 @@ P(X = i) =  \begin{cases}
 0 & \text{ 其余情况 }
 \end{cases}
 \]
-则对于 $L$ 的最小方差无偏估计 $\hat{L}$ 为
+则对于 $L$ 的一个无偏估计 $\hat{L}$ 为
 \begin{equation}
-\label{len-est-thm-on-end-eq}
+\label{len-est-thm-2-ends-eq}
 \hat{L} = \frac{ D^{N+1} - 2 (D-1)^{N+1} + (\max(D-2, 0))^{N+1} }{ D^{N} - 2 (D-1)^{N} + (\max(D-2, 0))^{N} }
 \end{equation}
 其中 $D = \max_{1 \leq i \leq N} X_i - \min_{1 \leq i \leq N} X_i +1$. 
@@ -153,7 +153,18 @@ P(X = i) =  \begin{cases}
 下面我们给出定理 \ref{len-est-thm-2-ends} 的证明. 
 
 \begin{proof}
+根据均匀分布的性质, 我们容易得到
+\[
+P(D=i) = (L-D +1) \frac{ D^N - 2 (D-1)^N  + (\max(D-2,0))^N}{ L^N }
+\]
 
+从而
+\begin{align*}
+\operatorname{E}[\hat{L}] &= \sum_{i=1}^L P(D=i) 
+    \frac{i^{N+1}-2(i-1)^{N+1}+(\max(i-2,0))^{N+1}}{i^N-2(i-1)^N+(\max(i-2,0))^N} \\
+&= \frac{1}{L^N} \sum_{i=1}^L (L-i+1)(i^{N+1}-2(i-1)^{N+1}+(\max(i-2,0))^{N+1}) \\
+&= L
+\end{align*}
 \end{proof}
 
 \begin{thm}
