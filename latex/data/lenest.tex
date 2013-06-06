@@ -39,8 +39,8 @@
 
 \begin{thm}
 \label{len-est-thm-one-end}
-假设 $X_1$, $X_2$, ..., $X_N$ 是来自定义在 
-${1, 2, ..., L}$, $L \in \mathbb{Z}^+$ 的均匀分布, 
+假设 $X_1$, $X_2$, \ldots, $X_N$ 是来自定义在 
+${1, 2, \ldots , L}$, $L \in \mathbb{Z}^+$ 的均匀分布, 
 即 
 \[
 P(X = i) =  \begin{cases}
@@ -72,7 +72,7 @@ X_{(N)} = \max_{1 \leq i \leq N} X_i
 
 由于在这里考虑的是一个离散的均匀分布, 我们容易注意到
 \[
-P(X_1, X_2, ..., X_N | X_{(N)}) = \frac{1}{ {X_{(N)}}^N - (X_{(N)} - 1)^N }
+P(X_1, X_2, \ldots, X_N | X_{(N)}) = \frac{1}{ {X_{(N)}}^N - (X_{(N)} - 1)^N }
 \]
 与该分布的参数 $L$无关, 所以 $X_{(N)}$ 是一个充分统计量. 
 
@@ -81,7 +81,7 @@ P(X_1, X_2, ..., X_N | X_{(N)}) = \frac{1}{ {X_{(N)}}^N - (X_{(N)} - 1)^N }
 P(X_{(N)} = i) = \frac{ i^N - (i - 1)^N }{L^N}
 \]
 
-对于定理中 \ref{len-est-thm-one-end} 给出的估计 $\hat{L}$ 
+对于定理 \ref{len-est-thm-one-end} 中给出的估计 $\hat{L}$ 
 (式 \eqref{len-est-thm-on-end-eq}), 
 我们可以进一步计算 $\operatorname{E}[\hat{L}]$ 得
 \begin{align*}
@@ -89,6 +89,41 @@ P(X_{(N)} = i) = \frac{ i^N - (i - 1)^N }{L^N}
     \frac{i^{N+1} - (i-1)^{N+1}}{i^N-(i-1)^{N-1}} \\
 &= L
 \end{align*}
+从而我们可以知道定理 \ref{len-est-thm-one-end} 中给出的估计 $\hat{L}$ 
+(式 \eqref{len-est-thm-on-end-eq}) 是无偏的. 
+
+下面我们说明 $X_{(N)}$ 是一个完全统计量. 
+即对于所有的 $L \in \mathbb{Z}^+$, 若有一个函数 $g(x)$, $x \in \mathbb{Z}^+$ 使得
+\[
+\operatorname{E}[g(X_{(N)})] = 0
+\]
+则 $g(x) = 0$ 对所有 $x \in \mathbb{Z}^+$ 成立. 
+
+注意到
+\[
+\operatorname{E}[g(\hat{L})] = 0
+\]
+对所有的 $L \in \mathbb{Z}^+$ 成立意味着
+\begin{align*}
+\frac{1^N - 0^N}{1^N} g(1) &= 0 \\
+\frac{1^N - 0^N}{2^N} g(1) + \frac{2^N - 1^N}{2^N} g(2) &= 0 \\
+\frac{1^N - 0^N}{3^N} g(1) + \frac{2^N - 1^N}{3^N} g(2) + \frac{3^N - 2^N}{3^N} g(3) &= 0 \\
+\ldots
+\end{align*}
+所以根据数学归纳法, 我们容易得出 $g(x) = 0$ 对所有 $x \in \mathbb{Z}^+$ 成立. 
+进而我们可以知道 $X_{(N)}$ 是一个完全统计量. 
+
+由以上的分析我们知道: 
+\begin{itemize}
+\item $X_{(N)}$ 是一个充分统计量
+\item $X_{(N)}$ 是一个完全统计量
+\item 定理 \ref{len-est-thm-one-end} 中给出的估计 $\hat{L}$ 
+(式 \eqref{len-est-thm-on-end-eq}) 对于此处的分布的参数 $L$ 的估计是无偏的 
+\end{itemize}
+从而根据 Lehmann-Scheff{\'e} 定理
+\cite{lehmann2012completeness.p1, lehmann2012completeness.p2} 
+我们可以得出定理 \ref{len-est-thm-one-end} 中给出的估计 $\hat{L}$ 
+(式 \eqref{len-est-thm-on-end-eq}) 是对该分布的参数 $L$ 的最小方差无偏估计. 
 \end{proof}
 
 \begin{thm}
@@ -102,6 +137,7 @@ P(X_{(N)} = i) = \frac{ i^N - (i - 1)^N }{L^N}
 \end{thm}
 
 \section{仿真分析}
+XXX
 
 \section{实际 RNA-Seq 数据分析}
 
