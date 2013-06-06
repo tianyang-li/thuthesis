@@ -199,9 +199,11 @@ $L$ 是转录本的有效长度 ($\text{转录本实际长度} -R+1$).
 为了挑选覆盖原转录本 ``较多'' 的连续段, 
 我们在上面所述的测序模型下对每一个连续段考虑如下的一个概率
 \begin{equation}
+\label{lenest-one-contig-one-isof-prob-decription}
 P(\text{观察到一个连续段其长度} \leq \text{目前的连续段 } |\text{ 目前的连续段的覆盖})
 \end{equation}
 
+为了估计式 \eqref{lenest-one-contig-one-isof-prob-decription} 中的概率, 
 在这里我们先介绍一个改进的 Lander-Waterman 公式 (定理 \ref{discrete-lander-waterman}), 
 原先的 Lander-Waterman 公式 \cite{lander1988genomic} 在推导中使用了一些近似, 
 在这里我们不使用 \onlinecite{lander1988genomic} 中所使用的近似. 
