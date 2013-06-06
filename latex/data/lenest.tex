@@ -20,14 +20,25 @@
 \section{理论分析}
 在通过 RNA-Seq 数据估计转录本的时候我们对 RNA-Seq 数据做如下的假设以简化模型: 
 \begin{itemize}
-\item 所有的读段在原转录本上的位置的分布都是独立的
+\item 所有的读段在原转录本上的位置的分布都是独立的. 
 
-\item 所有的读段的长度都是相同的, 为 $R$ bp 长
+\item 所有的读段的长度都是相同的, 为 $R$ bp 长.
 
-\item 读段的 5' 段位置 (以下称之为起始位置) 在原转录本上的分布是均匀的
+\item 读段的 5' 段位置 (以下称之为起始位置) 在原转录本上的分布是均匀的. 
+同样的, 读段的 3' 段位置 (以下称之为终止位置) 在原转录本上的分布也是均匀的. 
 \end{itemize}
 
+为了在基因组参考序列没有基因注释, 甚至于没有基因组参考序列, 
+的情况下能够通过 RNA-Seq 数据估计出转录本的长度, 
+我们在这里给出定理 \ref{len-est-thm-one-end}, 
+定理 \ref{len-est-thm-2-ends}, 定理 \ref{thm-one-transcript-one-contig} 及其证明. 
+通过定理 \ref{len-est-thm-one-end}, 
+定理 \ref{len-est-thm-2-ends}, 定理 \ref{thm-one-transcript-one-contig} 
+我们可以通过 RNA-Seq 数据估计出转录本的长度. 
+在这里建议读者参考 \onlinecite{casella2002statistical}. 
+
 \begin{thm}
+\label{len-est-thm-one-end}
 假设 $X_1$, $X_2$, ..., $X_N$ 是来自定义在 
 ${1, 2, ..., L}$, $L \in \mathbb{Z}^+$ 的均匀分布, 
 即 
@@ -39,16 +50,54 @@ P(X = i) =  \begin{cases}
 \]
 则对于 $L$ 的最小方差无偏估计 $\hat{L}$ 为
 \begin{equation}
-\hat{L} = 
+\label{len-est-thm-on-end-eq}
+\hat{L} = \frac{ {X_{(N)}}^{N+1} - (X_{(N)} - 1)^{N+1} }{ {X_{(N)}}^N - (X_{(N)} - 1)^N }
 \end{equation}
 其中 $X_{(N)} = \max_{1 \leq i \leq N} X_i$. 
 \end{thm}
 
+通过定理 \ref{len-est-thm-one-end} 我们可以在已知转录本上一个固定的位点 
+(例如外显子出现剪切现象的边界), 根据读段的起始位置 (或者终止位置), 
+估计出着一个位于转录本上的固定的位点到转录本的一端的序列的长度, 
+从而能够估计出转录本的长度. 
+
+下面我们给出定理 \ref{len-est-thm-one-end} 的证明. 
+
+\begin{proof}
+我们首先说明 
+\[
+X_{(N)} = \max_{1 \leq i \leq N} X_i
+\] 
+在定理中的假设下是一个充分统计量. 
+
+由于在这里考虑的是一个离散的均匀分布, 我们容易注意到
+\[
+P(X_1, X_2, ..., X_N | X_{(N)}) = \frac{1}{ {X_{(N)}}^N - (X_{(N)} - 1)^N }
+\]
+与该分布的参数 $L$无关, 所以 $X_{(N)}$ 是一个充分统计量. 
+
+另外, 根据离散的均匀分布的性质我们可以得到
+\[
+P(X_{(N)} = i) = \frac{ i^N - (i - 1)^N }{L^N}
+\]
+
+对于定理中 \ref{len-est-thm-one-end} 给出的估计 $\hat{L}$ 
+(式 \eqref{len-est-thm-on-end-eq}), 
+我们可以进一步计算 $\operatorname{E}[\hat{L}]$ 得
+\begin{align*}
+\operatorname{E}[\hat{L}] &= \sum_{i=1}^L P(X_{(N)} = i) 
+    \frac{i^{N+1} - (i-1)^{N+1}}{i^N-(i-1)^{N-1}} \\
+&= L
+\end{align*}
+\end{proof}
+
 \begin{thm}
+\label{len-est-thm-2-ends}
 假设
 \end{thm}
 
 \begin{thm}
+\label{thm-one-transcript-one-contig}
 假设
 \end{thm}
 
