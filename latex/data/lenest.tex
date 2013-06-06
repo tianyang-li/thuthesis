@@ -101,7 +101,7 @@ P(X_{(N)} = i) = \frac{ i^N - (i - 1)^N }{L^N}
 
 注意到
 \[
-\operatorname{E}[g(\hat{L})] = 0
+\operatorname{E}[g(X_{(N)})] = 0
 \]
 对所有的 $L \in \mathbb{Z}^+$ 成立意味着
 \begin{align*}
@@ -128,8 +128,33 @@ P(X_{(N)} = i) = \frac{ i^N - (i - 1)^N }{L^N}
 
 \begin{thm}
 \label{len-est-thm-2-ends}
-假设
+假设$X_1$, $X_2$, \ldots, $X_N$ 是来自定义在 
+${p+1, p+2, \ldots , p+L}$, $p \in \mathbb{Z}$, $L \in \mathbb{Z}^+$ 的均匀分布, 
+即 
+\[
+P(X = i) =  \begin{cases}
+\frac{1}{L} & \text{ 当 } p+1 \leq i \leq p+L \\
+0 & \text{ 其余情况 }
+\end{cases}
+\]
+则对于 $L$ 的最小方差无偏估计 $\hat{L}$ 为
+\begin{equation}
+\label{len-est-thm-on-end-eq}
+\hat{L} = \frac{ D^{N+1} - 2 (D-1)^{N+1} + (\max(D-2, 0))^{N+1} }{ D^{N} - 2 (D-1)^{N} + (\max(D-2, 0))^{N} }
+\end{equation}
+其中 $D = \max_{1 \leq i \leq N} X_i - \min_{1 \leq i \leq N} X_i +1$. 
 \end{thm}
+
+通过定理 \ref{len-est-thm-2-ends} 我们可以在转录本上无法找到一个固定的位点时, 
+通过 RNA-Seq 数据对转录本的长度进行估计. 
+这种情况适用于在一个基因没有出现选择性剪切的现象时估计该转录本的长度, 
+例如真核生物中只有一个外显子的基因或者是原核生物中的单个操纵子. 
+
+下面我们给出定理 \ref{len-est-thm-2-ends} 的证明. 
+
+\begin{proof}
+
+\end{proof}
 
 \begin{thm}
 \label{thm-one-transcript-one-contig}
