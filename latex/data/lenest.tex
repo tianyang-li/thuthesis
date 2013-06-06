@@ -30,10 +30,10 @@
 
 为了在基因组参考序列没有基因注释, 甚至于没有基因组参考序列, 
 的情况下能够通过 RNA-Seq 数据估计出转录本的长度, 
-我们在这里给出定理 \ref{len-est-thm-one-end}, 
-定理 \ref{len-est-thm-2-ends}, 定理 \ref{thm-one-transcript-one-contig} 及其证明. 
-通过定理 \ref{len-est-thm-one-end}, 
-定理 \ref{len-est-thm-2-ends}, 定理 \ref{thm-one-transcript-one-contig} 
+我们在这里给出定理 \ref{len-est-thm-one-end} 和 
+定理 \ref{len-est-thm-2-ends} 及其证明. 
+通过定理 \ref{len-est-thm-one-end} 和 
+定理 \ref{len-est-thm-2-ends} 
 我们可以通过 RNA-Seq 数据估计出转录本的长度. 
 在这里建议读者参考 \onlinecite{casella2002statistical}. 
 
@@ -167,10 +167,54 @@ P(D=i) = (L-D +1) \frac{ D^N - 2 (D-1)^N  + (\max(D-2,0))^N}{ L^N }
 \end{align*}
 \end{proof}
 
-\begin{thm}
-\label{thm-one-transcript-one-contig}
+下面我们介绍一个方法, 
+通过这个方法我们可以在没有参考基因组序列的情况下从拼装的所有连续段 (contig) 
+中挑选出覆盖原先转录本部分较多 (例如该连续段是该转录本唯一的一个连续段) 的连续段. 
+因为在没有参考基因组序列的情况下, 若要认为一个连续段代表原基因, 
+则必须要求该连续段覆盖了原转录本的大部分的区域. 
+如果一个转录本的测序深度偏低, 覆盖低, 
+则通过测序的结果我们可能看到这个转录本会拥有多个连续段, 
+这样的情况在没有参考序列时是几乎无法分析的. 
+
+我们在这里对此进行分析, 首先我们定义测序的覆盖 (coverage) $c$
+\begin{equation}
+c = \frac{NR}{L}
+\end{equation}
+其中 $R$ 是测序读段的长度, $N$ 是转录本上测序时得到的读段的个数, 
+$L$ 是转录本的有效长度 ($\text{转录本实际长度} -R+1$). 
+
+同时, 我们在这里介绍一个用来描述测序过程的 Poisson 模型. 
+这里假设我们有一个无限长的序列, 
+每一个位置上起始的读段个数都是一个参数为 $\lambda$ 的 Poisson 分布. 
+并且所有位置的起始的读段个数均是独立的. 
+在这里测序的覆盖和 $\lambda$ 的在理想的情况下满足如下的关系
+\[
+\lambda = c R
+\]
+
+当两个读段至少有一个碱基对重合时, 
+我们认为这两个读段能够连接到一起组成一个更长的连续段. 通过这样的过程, 
+我们将若干读段连接在一起构成连续段. 
+
+为了挑选覆盖原转录本 ``较多'' 的连续段, 
+我们在上面所述的测序模型下对每一个连续段考虑如下的一个概率
+\begin{equation}
+P(\text{观察到一个连续段其长度} \leq \text{目前的连续段 } |\text{ 目前的连续段的覆盖})
+\end{equation}
+
+在这里我们先介绍一个改进的 Lander-Waterman 公式 (定理 \ref{discrete-lander-waterman}), 
+原先的 Lander-Waterman 公式 \cite{lander1988genomic} 在推导中使用了一些近似, 
+在这里我们不使用 \onlinecite{lander1988genomic} 中所使用的近似. 
+
+\begin{thm}[改进的 Lander-Waterman 公式]
+\label{discrete-lander-waterman}
 假设
 \end{thm}
+
+下面是定理 \ref{discrete-lander-waterman} 的证明. 
+
+\begin{proof}
+\end{proof}
 
 \section{仿真分析}
 XXX
