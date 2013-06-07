@@ -265,15 +265,9 @@ e^{-\Phi}\prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 \end{equation}
 最大化, 其中 $\Phi$ 是一个惩罚项, 可以使用以下这些方法等: 
 \begin{itemize}
-\item Lasso \cite{tibshirani1996regression}: 
-\[
-\Phi = \lambda \sum_{i \in I} |\theta_i|
-\]
-其中 $\lambda > 0$
-
 \item BIC \cite{BIC.Schwarz_1978}: 
 \[
-\Phi = \frac{|I|}{2} \log |R|
+\Phi = \frac{\sum_{i \in I, \theta_i>0} 1}{2} \log |R|
 \]
 \end{itemize}
 NSMAP 和 iReckon 均使用的是 Lasso, 
@@ -306,7 +300,7 @@ IsoLasso 和 SLIDE 对目前转录组中所有的基因所包含的外显子进�
 式 \eqref{outline-isolasso-slide} 中的处理, 通过线性回归估计每一个剪切异构体的表达量. 
 注意到通过该方法计算得的表达量值和用 RPKM 单位表达的表达量是成正比的. 
 由于一个基因可能的剪切异构体的个数相当的多, 
-在线性回归时 IsoLasso 和 SLIDE 均采用了 Lasso 用于正则化. 
+在线性回归时 IsoLasso 和 SLIDE 均采用了 Lasso \cite{tibshirani1996regression} 用于正则化. 
 与 \ref{intro-nsmap-cem-ireckon-montebllo} 中介绍的 NSMAP, CEM, 和 iReckon 类似, 
 IsoLasso 和 SLIDE 在计算时采用的策略均是枚举所有剪切异构体集合 $I$ 中的可能的剪切异构体. 
 由于一个基因可能的剪切异构体的个数是随它的外显子的个数的增长按指数规律增长的, 
