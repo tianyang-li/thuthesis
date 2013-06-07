@@ -267,6 +267,37 @@ $D_i=X_{i+1}-X_i$, $i=1,2,\ldots,N_D$).
 \operatorname{E}[D] \\
 \operatorname{E}[N_D]
 \end{align*}
+
+根据这里所使用的模型, 我们可以知道
+\[
+P(D=i) \propto \begin{cases}
+(1-q)^{i-1} q & i=1,2,\ldots,R-1 \\
+0 & \text{其余情况}
+\end{cases}
+\]
+
+所以可以计算得
+\begin{align*}
+\operatorname{E}[D] &= \frac{1}{1-(1-q)^{R-1}} \sum_{i=1}^{R-1} i (1-q)^{i-1} q \\
+&= \frac{(q(R-1)+1)(1-q)^R-(1-q)}{-(1-q)q(1-(1-q)^{R-1})}
+\end{align*}
+
+同时, 我们根据模型可知
+\[
+P(N_D=j) = (1-q)^{R-1}(1-(1-q)^{R-1})^{j},\ j=0,1,\ldots
+\]
+
+根据几何分布的性质我们可知
+\[
+\operatorname{E}[N_D]=\frac{1-(1-q)^{R-1}}{(1-q)^{R-1}}
+\]
+
+进一步化简我们可得
+\[
+\operatorname{E}[D] \operatorname{E}[N_D] = \frac{e^{R\lambda} -1}{e^{\lambda}-1} -R
+\]
+
+故定理得证. 
 \end{proof}
 
 \section{仿真分析}
