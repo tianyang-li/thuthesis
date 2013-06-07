@@ -228,16 +228,45 @@ p_{n+R} &= \sum_{i=1}^{R-1} (1-e^{-\lambda}) e^{-(R-1-i)\lambda} p_{n+i} & n &\g
 在这里我们不使用 \onlinecite{lander1988genomic} 中所使用的近似. 
 
 \begin{thm}[改进的 Lander-Waterman 公式]
-\label{discrete-lander-waterman}
+\label{discrete-lander-waterman-thm}
 在之前的 Poisson 模型下, 一个连续段的期望的长度
 \begin{equation}
+\label{discrete-lander-waterman-formula}
 \operatorname{E}[\text{一个连续段的长度}] = \frac{e^{R\lambda} - 1}{e^\lambda - 1} 
 \end{equation}
 \end{thm}
 
-下面我们给出定理 \ref{discrete-lander-waterman} 的证明. 
+下面我们给出定理 \ref{discrete-lander-waterman-thm} 的证明. 
 
 \begin{proof}
+这里为了描述的1简便, 我们记
+\begin{align*}
+q &= 1 - e^{-\lambda} \\
+1-q &= e^{-\lambda}
+\end{align*}
+
+为了证明定理 \ref{discrete-lander-waterman-thm} 
+中的式 \eqref{discrete-lander-waterman-formula}, 
+我们考虑相邻的读段起始位置的个数 $N_D$ (即两个位置是相邻的两个读段起始位置, 
+同时这两个位置上的读段连接在了一起), 
+以及两个相邻的有读段的位置间的差值 $D_i$, $i=1,2,\ldots,N_D$ 
+(即用 $X_1=1,X_2,\ldots,X_{N_D}, X_{N_D+1}$ 表示若干个相邻的读段起始位置时, 
+$D_i=X_{i+1}-X_i$, $i=1,2,\ldots,N_D$). 
+根据这里所使用的模型, 我们容易知道 $D_i$, $i=1,2,\ldots,N_D$ 是 i.i.d. 
+
+所以我们容易看出来
+\begin{align*}
+\operatorname{E}[\text{一个连续段的长度}] &= \operatorname{E}[X_{N_D + 1}] +R-1 \\
+&= \operatorname{E}[\sum_{i=1}^{N_D} D_i] +R \\
+&= \operatorname{E}[\operatorname{E}[\sum_{i=1}^{N_D} D_i|N_D]] +R \\
+&= \operatorname{E}[D] \operatorname{E}[N_D] +R
+\end{align*}
+
+下面我们分别计算
+\begin{align*}
+\operatorname{E}[D] \\
+\operatorname{E}[N_D]
+\end{align*}
 \end{proof}
 
 \section{仿真分析}
