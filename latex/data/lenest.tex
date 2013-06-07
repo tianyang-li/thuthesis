@@ -300,6 +300,16 @@ P(N_D=j) = (1-q)^{R-1}(1-(1-q)^{R-1})^{j},\ j=0,1,\ldots
 故定理得证. 
 \end{proof}
 
+为了估计式 \eqref{lenest-one-contig-one-isof-prob-decription} 
+中在给定覆盖 $\lambda$ 的情况下, 在无穷长的序列上观察到长度为 $l$ 的概率, 
+我们将该分布近用一个期望是 $\operatorname{E}[\text{一个连续段的长度}] -R+1$ 的几何分布, 
+从而估计出式 \ref{lenest-one-contig-one-isof-prob-decription} 
+中在无穷长的序列上给定覆盖 $\lambda$ 观察到一个连续段其长度小于等于目前的连续段的概率
+\begin{align}
+& P(\text{观察到一个连续段其长度} \leq \text{目前的连续段} l |\text{目前的连续段的覆盖} \lambda) \nonumber \\
+\approx & \frac{l-R+1}{\frac{e^{R\lambda} -1}{e^{\lambda}-1} -R+1}
+\end{align}
+
 \section{仿真分析}
 
 \section{实际 RNA-Seq 数据分析}
