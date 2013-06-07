@@ -306,9 +306,16 @@ P(N_D=j) = (1-q)^{R-1}(1-(1-q)^{R-1})^{j},\ j=0,1,\ldots
 从而估计出式 \ref{lenest-one-contig-one-isof-prob-decription} 
 中在无穷长的序列上给定覆盖 $\lambda$ 观察到一个连续段其长度小于等于目前的连续段的概率
 \begin{align}
+\label{lenest-one-contig-one-isof-prob-est}
 & P(\text{观察到一个连续段其长度} \leq \text{目前的连续段} l |\text{目前的连续段的覆盖} \lambda) \nonumber \\
 \approx & \frac{l-R+1}{\frac{e^{R\lambda} -1}{e^{\lambda}-1} -R+1}
 \end{align}
+
+在有了式 \eqref{lenest-one-contig-one-isof-prob-est} 中的近似估计之后, 
+我们可以在没有参考基因组序列的情况下挑选出来拼装结果中那些可能是大部分覆盖原转录本的那些连续段, 
+对这些连续段的长度通过前面定理 \ref{len-est-thm-one-end} 和定理 
+\ref{len-est-thm-2-ends} 中所述的方法进行估计, 
+从而进一步估计得这些连续段所对应的转录本的表达量. 
 
 \section{仿真分析}
 
