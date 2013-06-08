@@ -194,8 +194,43 @@ $R$ 中的读段解释). 常数 $q \in \mathbb{R}$, $m \in \mathbb{Z}^+$.
 我们下面的定理说明了 M-ISOFORM 是一个 NP 完全问题. 
 
 \begin{thm}
+\label{m-isoform-np-hard}
 M-ISOFORM 是一个 NP 完全问题.
 \end{thm}
 
 \section{证明}
+
+下面我们给出定理 \ref{m-isoform-np-hard}, 说明 M-ISOFORM 是一个 NP 完全问题. 
+定理 \ref{m-isoform-np-hard} 的证明主要受到了 \onlinecite{Tomescu.recomb.seq.2013} 的启发, 
+将通过 RNA-Seq 数据辨识基因的剪切异构体的问题看作是一个网络流问题. 
+证明中我们采用了一个类似 \onlinecite{Vatinlen20081390} 的方法, 
+将 3-PARTITION \cite{doi:10.1137/0204035, Garey:1990:CIG:574848} 规约到 M-ISOFORM. 
+
+\begin{proof}
+首先注意到在实数 RAM 模型 \cite{Preparata:1985:CGI:4333} 下, 
+在给定该基因的一个剪切异构体的集合 $I$ 的情况下, 及个转录本的表达量 $\theta_i$, $i\in I$, 
+我们可以在多项式时间内验证是否式 \eqref{rna-seq-data-poisson-likelihood} 中的似然函数 $L(R) \geq q$, 
+并且对所有的读段 $r\in R$, 
+是否存在一个剪切异构体 $i\in I$ 让读段 $r$ 可以来自剪切异构体 $i$. 
+所以我们可以看出来 M-ISOFORM $\in$ NP. 
+
+下面处我们介绍判定问题 3-PARTITION \cite{doi:10.1137/0204035, Garey:1990:CIG:574848}, 
+并给出一个方法在多项式时间内规将其约到 M-ISOFORM. 
+
+\newtheorem*{tripart}{3-PARTITION}
+
+\begin{tripart}
+\hspace*{1mm}
+
+实例: 一个包含 $3w$ 个元素的集合 $X$, 一个界 $Y \in \mathbb{Z}^+$, 
+和一个量 $u(x) \in \mathbb{Z}^+$ 使得对每个 $x \in X$ 
+都有 $\frac{Y}{4} < u(x) < \frac{Y}{2}$, 
+并且 $\sum_{x \in X} u(x) = w Y$.
+
+问题: $X$ 能否被划分为 $w$ 个不相交的集合 $X_1$, $X_2$, \ldots, $X_w$ 使得, 
+对所有的 $1 \leq i \leq w$, $\sum_{x \in X_i} u(x) = Y$ 
+(注意到每个 $X_i$ 必须包含恰好 3 个来自 $X$ 的元素)?
+\end{tripart}
+\end{proof}
+
 
