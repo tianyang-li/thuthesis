@@ -33,6 +33,7 @@ RNA-Seq 数据通过 Trinity \cite{grabherr2011full} 拼装得到的剪切图}
 \end{figure}
 
 \subsection{模型}
+\label{nphard-model}
 
 为了能够通过 RNA-Seq 数据估计出转录组中转录本的组成, 辨识每个基因的剪切异构体, 
 我们在这里介绍一个 Poisson 模型用来描述 RNA-Seq 数据 \cite{Jiang15042009}. 
@@ -92,7 +93,7 @@ $P$ 由该基因上的前 $L-k+1$ 个位置组成.)
 根据上面的描述, 我们得出观察到 RNA-Seq 读段的似然函数
 \begin{equation}
 \label{rna-seq-data-poisson-likelihood}
-L(R)= \prod_{p\in P} \frac{\lambda^{N(p)} e^{-\lambda}}{N(p)!}
+L(R)= \prod_{p\in P} \frac{{\lambda_p}^{N(p)} e^{-\lambda_p}}{N(p)!}
 \end{equation}
 其中 $N(p)$ 是在位置 $p\in P$ 所管查到的在该位置起始的读段的数目, 
 $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义. 
@@ -106,7 +107,7 @@ $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义.
 \begin{align}
 \tilde{L}(R) &= e^{-\Phi} L(R) \nonumber \\ 
 \label{rna-seq-data-poisson-penalized-likelihood}
-&= e^{-\Phi} \prod_{p\in P} \frac{\lambda^{N(p)} e^{-\lambda}}{N(p)!}
+&= e^{-\Phi} \prod_{p\in P} \frac{{\lambda_p}^{N(p)} e^{-\lambda_p}}{N(p)!}
 \end{align}
 其中 $\Phi \geq 0$ 是一个惩罚函数. 
 
@@ -149,10 +150,39 @@ $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义.
 当我们使用 $L_0$ 正则化作为式 \eqref{rna-seq-data-poisson-penalized-likelihood} 
 中的惩罚函数最大化带惩罚项的似然函数时, 此时等价于
 \begin{align}
-\max &\ L(R) =  \prod_{p\in P} \frac{\lambda^{N(p)} e^{-\lambda}}{N(p)!} \nonumber \\
+\max &\ L(R) =  \prod_{p\in P} \frac{{\lambda_p}^{N(p)} e^{-\lambda_p}}{N(p)!} \nonumber \\
+\label{rna-seq-data-likelihood-1}
 \text{s.t.} &\  \sum_{i \in I, \lambda_i>0} 1 \leq t
 \end{align}
 其中 $t\geq 0$ 是一个常数. 
+
+同时我们对剪切异构体的集合 $I$ 也有要求: 对于每一个属于 $R$ 的读段 $r$, 
+我们均要求至少存在一个剪切异构体 $i \in I$ 使得读段 $r$ 是可以来自剪切异构体 $i$ 的. 
+这对于式 \ref{rna-seq-data-likelihood-1} 中的优化问题又增加了一项组合约束. 
+
+给出了这些观察之后, 我们可以将此处通过 RNA-Seq 数据估计转录组中转录本的问题, 
+也即基因的剪切异构体的辨识的问题, 转换为一个判定问题:
+\begin{itemize}
+\item 给定一个阈值, 
+能不能找到一个剪切异构体的集合以及这些转录本的表达量使得似然函数的值大于该阈值?
+\end{itemize}
+下面我们采用前面 \ref{nphard-model} 中所使用的符号来描述判定问题 M-ISOFORM. 
+
+\newtheorem*{misof}{M-ISOFORM}
+
+\begin{misof}
+\hspace*{1mm}
+
+实例: 一个基因的剪切图 $G$, 以及对应到该剪切图中的读段集合 $R$ 
+(这里我们保证剪切图 $G$ 中的所有定点所对应的外显子和边所表示的外显子的连接关系均能由 
+$R$ 中的读段解释). 常数 $q \in \mathbb{R}$, $m \in \mathbb{Z}^+$. 
+
+问题: 是否存在该基因的一个剪切异构体的集合 $I$, $|I| \leq m$, 
+以及这些转录本的表达量 $\theta_i > 0$
+使得式 \eqref{rna-seq-data-poisson-likelihood} 中的似然函数 $L(R) \geq q$, 
+并且对每一个读段 $r \in R$ 均存在至少一个该基因的剪切异构体 $i\in I$ 
+让读段 $r$ 来自剪切异构体 $i$?
+\end{misof}
 
 \section{证明}
 
