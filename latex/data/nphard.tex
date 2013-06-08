@@ -156,6 +156,12 @@ $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义.
 \end{align}
 其中 $t\geq 0$ 是一个常数. 
 
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=\textwidth]{figures/lol.png}
+%\caption*{}
+%\end{figure}
+
 同时我们对剪切异构体的集合 $I$ 也有要求: 对于每一个属于 $R$ 的读段 $r$, 
 我们均要求至少存在一个剪切异构体 $i \in I$ 使得读段 $r$ 是可以来自剪切异构体 $i$ 的. 
 这对于式 \ref{rna-seq-data-likelihood-1} 中的优化问题又增加了一项组合约束. 
@@ -184,11 +190,12 @@ $R$ 中的读段解释). 常数 $q \in \mathbb{R}$, $m \in \mathbb{Z}^+$.
 让读段 $r$ 来自剪切异构体 $i$?
 \end{misof}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth]{figures/lol.png}
-\caption*{}
-\end{figure}
+在实数 RAM 模型 \cite{Preparata:1985:CGI:4333} 下, 
+我们下面的定理说明了 M-ISOFORM 是一个 NP 完全问题. 
+
+\begin{thm}
+M-ISOFORM 是一个 NP 完全问题.
+\end{thm}
 
 \section{证明}
 
