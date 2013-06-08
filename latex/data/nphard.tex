@@ -149,9 +149,10 @@ $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义.
 当我们使用 $L_0$ 正则化作为式 \eqref{rna-seq-data-poisson-penalized-likelihood} 
 中的惩罚函数最大化带惩罚项的似然函数时, 此时等价于
 \begin{align}
-\max & \nonumber \\
-\text{s.t.} &
+\max &\ L(R) =  \prod_{p\in P} \frac{\lambda^{N(p)} e^{-\lambda}}{N(p)!} \nonumber \\
+\text{s.t.} &\  \sum_{i \in I, \lambda_i>0} 1 \leq t
 \end{align}
+其中 $t\geq 0$ 是一个常数. 
 
 \section{证明}
 
