@@ -263,9 +263,9 @@ NSMAP, CEM, iReckon, 和 Montebello 这 4 个工具是同时进行剪切异构�
 e^{-\Phi} L(R) = 
 e^{-\Phi}\prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 \end{equation}
-最大化, 其中 $\Phi$ 是一个惩罚项, 可以使用以下这些方法等: 
+最大化, 其中 $\Phi \geq 0$ 是一个惩罚项, 可以使用以下这些方法等: 
 \begin{itemize}
-\item BIC \cite{BIC.Schwarz_1978}: 
+\item BIC (Bayesian information criterio) \cite{BIC.Schwarz_1978}: 
 \[
 \Phi = \frac{\sum_{i \in I, \theta_i>0} 1}{2} \log |R|
 \]

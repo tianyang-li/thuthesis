@@ -96,6 +96,49 @@ L(R)= \prod_{p\in P} \frac{\lambda^{N(p)} e^{-\lambda}}{N(p)!}
 \end{equation}
 其中 $N(p)$ 是在位置 $p\in P$ 所管查到的在该位置起始的读段的数目, 
 $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义. 
+
+根据式 \eqref{rna-seq-data-poisson-likelihood} 中所给出来的似然函数, 
+我们可以通过最大化该似然函数确定该基因的剪切异构体的集合 $I$, 
+辨识该基因的剪切异构体. 
+但是由于一个基因可能的剪切异构体的个数是随着该基因中外显子的个数增长按指数规律增长的, 
+所以我们可以使用一个带惩罚项的似然函数进行最大化
+\begin{align}
+\tilde{L}(R) &= e^{-\Phi} L(R) \nonumber \\ 
+\label{rna-seq-data-poisson-penalized-likelihood}
+&= e^{-\Phi} \prod_{p\in P} \frac{\lambda^{N(p)} e^{-\lambda}}{N(p)!}
+\end{align}
+其中 $\Phi \geq 0$ 是一个惩罚函数. 
+
+对于这里的乘法函数 $\Phi$ 我们可以选取: 
+\begin{itemize}
+\item Lasso \cite{tibshirani1996regression}:
+\[
+\Phi = \Lambda \sum_{i \in I} |\lambda_i|
+\]
+其中 $\Lambda > 0$ 是一个常数. 
+
+该方法是 NSMAP \cite{nsmap.21575225} 所使用的方法. 
+
+\item $L_q$ ($0<q<1$) 正则化:
+\[
+\Phi = \Lambda \sum_{i \in I} |\lambda_i|^q
+\]
+其中 $\Lambda > 0$, $0 <q<1$ 为两个常数. 
+
+该方法是 Montebello \cite{Hiller.Montebello} 所使用的方法. 
+
+\item $L_0$ 正则化:
+\[
+\Phi = \Lambda \sum_{i \in I, \lambda_i >0} 1
+\]
+其中 $\Lambda > 0$ 是一个常数. 
+
+当我们取 
+\[
+\Lambda = \frac{\log |R|}{2}
+\]
+此时相当于使用 BIC (Bayesian information criterion) \cite{BIC.Schwarz_1978}. 
+\end{itemize}
 \subsection{M-ISOFORM 判定问题}
 
 \section{证明}
