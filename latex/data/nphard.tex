@@ -112,11 +112,23 @@ $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义.
 
 对于这里的乘法函数 $\Phi$ 我们可以选取: 
 \begin{itemize}
+\item $L_0$ 正则化:
+\[
+\Phi = \Lambda \sum_{i \in I, \lambda_i >0} 1
+\]
+其中 $\Lambda \geq 0$ 是一个常数. 
+
+当我们取 
+\[
+\Lambda = \frac{\log |R|}{2}
+\]
+此时相当于使用 BIC (Bayesian information criterion) \cite{BIC.Schwarz_1978}. 
+
 \item Lasso \cite{tibshirani1996regression}:
 \[
 \Phi = \Lambda \sum_{i \in I} |\lambda_i|
 \]
-其中 $\Lambda > 0$ 是一个常数. 
+其中 $\Lambda \geq 0$ 是一个常数. 
 
 该方法是 NSMAP \cite{nsmap.21575225} 所使用的方法. 
 
@@ -124,27 +136,22 @@ $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义.
 \[
 \Phi = \Lambda \sum_{i \in I} |\lambda_i|^q
 \]
-其中 $\Lambda > 0$, $0 <q<1$ 为两个常数. 
+其中 $\Lambda \geq 0$, $0 <q<1$ 为两个常数. 
 
 该方法是 Montebello \cite{Hiller.Montebello} 所使用的方法. 
-
-\item $L_0$ 正则化:
-\[
-\Phi = \Lambda \sum_{i \in I, \lambda_i >0} 1
-\]
-其中 $\Lambda > 0$ 是一个常数. 
-
-当我们取 
-\[
-\Lambda = \frac{\log |R|}{2}
-\]
-此时相当于使用 BIC (Bayesian information criterion) \cite{BIC.Schwarz_1978}. 
 \end{itemize}
 
 \subsection{M-ISOFORM 判定问题}
 为了说明通过真核生物 RNA-Seq 数据估计基因的转录组的问题, 
 也即辨识基因的剪切异构体的问题, 我们在这里定义一个判定问题 M-ISOFORM. 
 
+根据 \onlinecite{luenberger2008linear} 我们可以知道, 
+当我们使用 $L_0$ 正则化作为式 \eqref{rna-seq-data-poisson-penalized-likelihood} 
+中的惩罚函数最大化带惩罚项的似然函数时, 此时等价于
+\begin{align}
+\max & \nonumber \\
+\text{s.t.} &
+\end{align}
 
 \section{证明}
 
