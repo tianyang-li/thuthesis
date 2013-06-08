@@ -70,9 +70,10 @@ $i \in I$ 是剪切异构体 $i$ 的表达量.
 在用来描述 RNA-Seq 数据的 Poisson 模型中, 
 我们假设对于基因中的每一个位置 $p$, 
 在这个位置起始的读段的个数满足参数为 
-\[
-\sum_{\text{剪切异构体 $i \in I$ 经过该位置}} a_{pi} \lambda_i
-\]
+\begin{equation}
+\label{rna-seq-data-position-lambda}
+\lambda_p = \sum_{\text{剪切异构体 $i \in I$ 经过位置 $p$}} a_{pi} \lambda_i
+\end{equation}
 的 Poisson 分布. (此处可以参考图 \ref{nphard.ex1.aligned.data} 进行理解.)
 这里 $a_{pi} \geq 0$ 是与目前该位置 $p$ 有关的一个采样率 \cite{2011arXiv1106.3211S}. 
 我们假设在给定基因中的一个位置 $p$ 之后, 以及一个剪切异构体 $i \in I$, 
@@ -88,6 +89,13 @@ $P$ 由该基因上的前 $L-k+1$ 个位置组成.)
 同时, 我们假设对于该基因中不同的位置, 
 在这些位置起始的读段的个数的分布式独立的. 
 
+根据上面的描述, 我们得出观察到 RNA-Seq 读段的似然函数
+\begin{equation}
+\label{rna-seq-data-poisson-likelihood}
+L(R)= \prod_{p\in P} \frac{\lambda^{N(p)} e^{-\lambda}}{N(p)!}
+\end{equation}
+其中 $N(p)$ 是在位置 $p\in P$ 所管查到的在该位置起始的读段的数目, 
+$\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义. 
 \subsection{M-ISOFORM 判定问题}
 
 \section{证明}
