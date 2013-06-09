@@ -19,6 +19,7 @@
 我们对来自 ENCODE \cite{encode} 的 RNA-Seq 数据 
 \footnote{\url{http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeCaltechRnaSeq/wgEncodeCaltechRnaSeqGm12878R1x75dAlignsRep2V2.bam}} 
 进行了分析, 试图发现 RNA-Seq 数据读段分布的一些规律. 
+在分析中, 我们只对只有一个外显子的基因进行了分析.
 
 \subsection{方法}
 \subsubsection{检验均匀分布的 p-value 的计算}
@@ -27,5 +28,31 @@
 通过 parametric bootrstrap \cite{efron1993introduction} 计算 p-value. 
 
 \subsection{结果}
+\subsubsection{检验均匀分布的 p-value}
+我们对于只有一个外显子的基因中读段的分布计算了检验均匀分布的 p-value, 
+做过 FDR 调整 \cite{benjamini1995controlling} 的 p-value 
+的柱状图如图 \ref{nonunif-adj-unif-pval} 所示. 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/nonunif/padj-hist.pdf}
+\caption{FDR 调整 \cite{benjamini1995controlling} 后的检验均匀分布的 p-value}
+\label{nonunif-adj-unif-pval}
+\end{figure}
+
+\subsubsection{RNA-Seq 数据中读段的分布}
+图 \cite{nonunif-read-locations} 中标出了不同的长度的基因, 
+各位置的颜色表示归一化后的的读段个数的值. 
+此处尚未能观察出 RNA-Seq 数据中读段分布不均匀的规律. 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/nonunif/isof_len-vs-reads_distr.pdf}
+\caption{不同长度的基因各位置归一化后的读段个数}
+\label{nonunif-read-locations}
+\end{figure}
+
+
+
 
 
