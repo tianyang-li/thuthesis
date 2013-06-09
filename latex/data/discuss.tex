@@ -17,7 +17,17 @@
 另外, \ref{chap-lenest} 中所介绍的方法也未考虑读段分布的非独立性. 
 这些问题都是需要进一步继续的研究来解决的. 
 
-\section{通过 RNA-Seq 数据估计基因的转录组}
+\section{通过真核生物 RNA-Seq 数据估计基因的转录组}
+根据 \ref{chap-rna-seq-nphard} 中的讨论, 
+我们知道通过目前的 RNA-Seq 技术从 RNA-Seq 数据中直接估计转录组中转录本的组成在计算上是比较困难的. 
+同样的问题在通过测序数据估计单体型 (haplotype) 
+\cite{Li_Kim_Waterman_2004, Xing_Jordan_Sharan_2007} 时也是同样存在的 \cite{1668028}. 
+
+随着测序技术的发展, 
+RNA-PET \cite{Fullwood01042009} 技术可以对直接用来确定转录本的 5' 端和 3' 端, 
+另外更长的测序读段 (例如 PacBio 研发的单分子测序技术 \cite{hybrid.rna.seq.2012})
+可以帮助我们在测序数据得到后不需要使用类似 \ref{chap-rna-seq-nphard} 
+给出的复杂的方法就能简单地直接从数据中确定转录组由哪些转录本组成. 
 
 \section{现有 RNA-Seq 数据处理方法中存在的一些问题}
 目前已有的用于 RNA-Seq 数据辨识基因的剪切异构体和估计表达量的方法 
@@ -54,22 +64,32 @@
 
 \section{未来 RNA-Seq 数据的定量分析方法的工作}
 
-\subsection{真核生物}
-
-\subsubsection{介绍} %% 需要测的读段更长
-
 \subsubsection{RNA-PET 测序技术} %% 序列比对, 拼装
 
-\subsubsection{PacBio 长读段} %% 序列比对, 拼装
+\subsubsection{更长的测序读段} %% 序列比对, 拼装
 
 \subsection{原核生物}
+原核生物的 RNA-Seq 数据分析对于对于我们研究微生物中的基因表达是十分有意义的. 
+此外, 近几年来兴起的宏转录组 (metatranscriptome) 的研究也帮助了我们对于微生物群落有了更为深入的了解
+\cite{gilbert2008detection, urich2008simultaneous, gifford2010quantitative, 
+helbling2011activity, mason2012metagenome, huson2011integrative, 
+lesniewski2012metatranscriptome}. 
 
-\subsubsection{介绍} %% 需要测的读段更长, 从 RNA-Seq 数据中分析操纵子
-原核生物的 RNA-Seq 数据分析对于
+\nocite{sorek2009prokaryotic}
 
-\subsubsection{与真核生物 RNA-Seq 数据的比较} %% 计算上比原核生物更为简单, 模型相似
 与真核生物不同, 原核生物中多个基因会被同时翻译到一个转录本中形成一个操纵子 
-(图 \ref{e.coli.lactose.operon}).
+(图 \ref{e.coli.lactose.operon}). 
+最近几年的研究表明 \cite{MarcGuell11272009, koide2009prevalence}, 
+原核生物在不同的环境条件下在基因组的同一段区域可能产生不同的操纵子. 
+通过 RNA-Seq 数据辨识原核生物操纵子也将可能成为原核生物 RNA-Seq 数据分析中的重要的一步. 
+
+另外, 在原核生物的转录组中有大量的 rRNA (ribosomal RNA).  
+在 RNA-Seq 实验中, 
+rRNA 和其他种类的 RNA (例如 mRNA) 相比起来 rRNA 含量可能超过 
+90\% \cite{giannoukos2012efficient}. 
+此时, rRNA 的含量会对于研究其他种类的 RNA 产生较大的负面影响. 
+目前 \onlinecite{giannoukos2012efficient} 中使用了一种新的实验技术, 
+可以在测序前减少样本中 rRNA 的含量. 
 
 \begin{figure}[!t]
 \centering
@@ -78,7 +98,10 @@
 \label{e.coli.lactose.operon}
 \end{figure}
 
-\subsubsection{RNA-PET 测序技术} %% 序列比对, 拼装
+
+
+
+
 
 
 
