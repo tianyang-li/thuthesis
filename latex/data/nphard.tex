@@ -248,7 +248,7 @@ M-ISOFORM 是一个 NP 完全问题.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[width=\textwidth]{figures/nphard/part3-gene.pdf}
+\includegraphics[width=1.05\textwidth]{figures/nphard/part3-gene.pdf}
 \caption{一个 3-PARTITION 实例对应的构造的基因}
 \label{tripart-reduce-gene}
 \end{figure}
@@ -303,10 +303,64 @@ x^N e^{-x} & x \geq 0
 该函数取得最大值当且仅当 $x=N$. 
 
 所以, 式 \eqref{tripart-misof-likelihood-threshold} 成立当且仅当
-\[
+\begin{equation}
+\label{tripart-misof-equiv-lambda}
 \lambda_p=N(p)
+\end{equation}
+对所有的 $p\in P$ 成立.  
+
+我们首先说明在这里的 3-PARTITION 的实例有解时, 
+我们所构造的 M-ISOFORM 的实例也有解. 
+当该 3-PARTITION 的实例有解时, 假设 $i\in X$ 所属于的集合是 $X_j$, 
+则我们给剪切异构体的集合 $I$ 中添加剪切异构体 
+\[
+A\to B_i \to C \to D_j \to E
+\] 
+同时将该剪切异构体的表达量定为 
+\[
+u(i)
+\] 
+此时 $I$ 中恰好有 $3w$ 个剪切异构体, 
+并且根据式 \eqref{rna-seq-data-position-lambda} 我们知道式 
+\eqref{tripart-misof-equiv-lambda} 此时也是满足的. 
+另外这里容易看出来对于每个读段 $r\in R$, 
+均存在一个剪切异构体 $i\in I$ 让读段 $r$ 是可以来自剪切异构体 $i$ 的.
+所以我们知道对应的我们构造的 M-ISOFORM 实例也有解. 
+
+下面我们说明当我们所构造的 M-ISOFORM 的实例有解时, 
+这里的 3-PARTITION 问题也是有解的. 
+我们容易注意到, 若存在满足要求的剪切异构体的集合 $I$ 时, 
+其中一定包含恰好 $3w$ 个剪切异构体, 
+因为图 \ref{tripart-reduce-gene} 所示的基因结构意味着至少有 $3w$ 个剪切异构体, 
+这样才能保证对于每个读段 $r\in R$ 至少存在一个剪切异构体 $i\in I$ 
+让读段 $r$ 是可以来自剪切异构体 $i$ 的. 
+同时根据图 \ref{tripart-reduce-gene} 所示的基因结构, 
+我们可以知道每个剪切异构体必须是
+\[
+A\to B_i \to C \to D_j \to E
 \]
-对所有的 $p\in P$ 成立. 
+对于某 $1\leq i \leq 3w$ 和 $1 \leq j \leq w$, 
+否则为了保证保证对于每个读段 $r\in R$ 至少存在一个剪切异构体 $i\in I$ 
+让读段 $r$ 是可以来自剪切异构体 $i$ 的, 
+我们需要 $I$ 中有多于 $3w$ 个剪切异构体. 
+再注意到, 此时由于还有式 \eqref{rna-seq-data-position-lambda} 
+和式 \eqref{tripart-misof-equiv-lambda} 的约束, 
+对于前面的剪切异构体 $A\to B_i \to C \to D_j \to E$, 
+它的表达量应该是
+\[
+u(i)
+\]
+同时, 根据式 \eqref{rna-seq-data-position-lambda} 
+和式 \eqref{tripart-misof-equiv-lambda} 的约束, 
+以及 $\frac{Y}{4} < u(x) < \frac{Y}{2}$, 
+我们可以知道对于每个 $q\leq j\leq w$, 外显子 $D_j$ 中恰好有 3 个剪切异构体通过, 
+并且这 3 个剪切异构体的表达量之和是 $Y$. 
+所以在这个时候我们根据每个外显子 $D_j$, $1\leq j \leq w$ 中所经过的剪切异构体的情况, 
+可以把 $X$ 分为不相交的 $w$ 个集合 $X_1$, $X_2$, \ldots, $X_w$ 使得 
+对所有的 $1 \leq i \leq w$, $\sum_{x \in X_i} u(x) = Y$, 
+并且每个 $X_j$, $1\leq j \leq w$ 中恰好有 $X$ 中的 3 个元素. 
+
+所以该定理得证, 我们知道 M-ISOFORM 是一个 NP 完全问题. 
 
 \end{proof}
 
