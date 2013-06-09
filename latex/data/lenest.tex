@@ -323,5 +323,23 @@ P(N_D=j) = (1-q)^{R-1}(1-(1-q)^{R-1})^{j},\ j=0,1,\ldots
 %\section{仿真分析}
 
 \section{实际 RNA-Seq 数据分析}
+我们对来自 ENCODE \cite{encode} 的 RNA-Seq 数据 
+\footnote{\url{http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeCaltechRnaSeq/wgEncodeCaltechRnaSeqGm12878R1x75dAlignsRep2V2.bam}} 
+进行了分析, 
+用来在真实 RNA-Seq 数据上测试前面所叙述的估计转录本长度的方法. 
+
+图 \ref{real-len-VS-est-len} 给出了我们估计的转录本的长度和真实的转录本的长度的比较, 
+由该图课件目前我们的方法效果并不理想 
+(Pearson 相关系数 95\% 置信区间为 $[0.02573188, 0.17556616$]). 
+主要原因十分有可能是因为实际的 RNA-Seq 数据的读段分布与我们的假设不符合. 
+在图 \ref{real-len-VS-est-len} 的分析中, 我们只对只有一个外显子的基因进行了分析. 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\textwidth]{figures/lenest/real-len-VS-est-len.pdf}
+\caption{real-len-VS-est-len}
+\label{}
+\end{figure}
+
 
 
