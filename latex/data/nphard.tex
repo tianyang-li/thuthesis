@@ -237,16 +237,76 @@ M-ISOFORM 是一个 NP 完全问题.
 3-PARTITION 是强 NP 完全的, 
 即 3-PARTITION 的输入用 unary 表示时 3-PARTITON 仍然是 NP 完全的. 
 
-我们下面将用 unary 输入的 3-PARTITION 在多项式时间内规约到 M-ISOFORM. 
+我们下面将用 unary 输入的一个 3-PARTITION 实例在多项式时间内规约到一个 M-ISOFORM 实例. 
 
-给定一个 unary 输入的 3-PARTITION 的实例, 我们构造一个基因如图 \ref{tripart-reduce-gene} 所示. 
+给定一个 unary 输入的 3-PARTITION 的实例, 
+我们构造一个基因如图 \ref{tripart-reduce-gene} 所示, 
+这里每一个外显子的长度均为 $k-1$ bp ($k\geq 2$ 是一个固定的常数). 
+同时我们构造一个读段的集合 $R$, 
+其中共包含 $4wY(k-1)$ 个长度为 $k$ bp 的读段. 
+在这里为了方便描述, 我们不妨设 $X=\{1,2,\ldots,3w\}$. 
 
 \begin{figure}[!t]
 \centering
-\includegraphics[height=\textheight]{figures/nphard/part3-gene.pdf}
+\includegraphics[width=\textwidth]{figures/nphard/part3-gene.pdf}
 \caption{一个 3-PARTITION 实例对应的构造的基因}
 \label{tripart-reduce-gene}
 \end{figure}
+
+对于外显子 $A$, 在其中的 $k-1$ 个位置中的每一个位置共有 $wY$ 个读段将该位置作为起始位置, 
+其中对于 $1\leq i\leq 3w$, 
+这 $wY$ 个读段中有 $u(i)$ 个读段是从外显子 $A$ 连接到到外显子 $B_i$ 的. 
+
+对于 $1\leq i\leq 3w$, 
+外显子 $B_i$ 的 $k-1$ 个位置的每个位置均有 $u(i)$ 个读段将该位置作为起始位置, 
+连接到外显子 $C$ 中. 
+
+对于外显子 $C$, 其中的 $k-1$ 个位置的每个位置均有 $wY$ 个读段将该位置作为起始位置, 
+其中对于 $1\leq i \leq w$,
+这 $wY$ 个读段中有 $Y$ 个读段是从外显子 $C$ 连接到外显子 $D_i$ 的. 
+
+对于 $1\leq i \leq w$,
+外显子 $D_i$ 的 $k-1$ 个位置的每个位置均有 $Y$ 个读段将该位置作为起始位置, 
+连接到外显子 $E$ 中. 
+
+注意到, 由于所有的外显子的长度均为 $k-1$ bp, 而读段的长度为 $k$ bp, 
+所以 $D$ 的所有位置中都没有是任何读段的起始位置. 
+
+同时, 我们对于该 3-PARTITION 实例, 
+对于图 \ref{tripart-reduce-gene} 中的所有的读段起始位置, 采样率均为 $1$. 
+
+在此我们有了对应该 3-PARTITION 的实例的一个 M-ISOFORM 实例, 并且我们有一个如下的问题: 
+\begin{itemize}
+\item 是否存在一个剪切异构体的集合 $I$, $|I| \leq 3w$, 
+以及这些转录本的表达量 $\lambda_i \geq 0$, $i \in I$, 
+使得式 \eqref{rna-seq-data-poisson-likelihood} 中的似然函数
+\begin{align}
+\label{tripart-misof-likelihood-threshold}
+L(R) &= \prod_{p\in P} \frac{{\lambda_p}^{N(p)} e^{-\lambda_p}}{N(p)!} \nonumber \\
+&\geq \prod_{p\in P} \frac{{N(p)}^{N(p)} e^{-N(p)}}{N(p)!}
+\end{align}
+(这里所使用的阈值是 $\prod_{p\in P} \frac{{N(p)}^{N(p)} e^{-N(p)}}{N(p)!}$.)
+\end{itemize}
+
+注意到, 前面对于给定的 3-PARTITION 实例构造这一个 M-ISOFORM 实例是在多项式时间之内完成的. 
+下面我们说明给出的 3-PARTITION 有解当且仅当我们构造的着一个 M-ISOFORM 实例是有解的. 
+
+首先我们容易看出来, 
+对于下面的函数
+\[
+f(x) = \begin{cases}
+0 & x < 0 \\
+x^N e^{-x} & x \geq 0
+\end{cases}
+\]
+其中 $N \in \mathbb{Z}^+$. 
+该函数取得最大值当且仅当 $x=N$. 
+
+所以, 式 \eqref{tripart-misof-likelihood-threshold} 成立当且仅当
+\[
+\lambda_p=N(p)
+\]
+对所有的 $p\in P$ 成立. 
 
 \end{proof}
 
