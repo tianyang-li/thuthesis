@@ -29,7 +29,13 @@
 我们将转录本划分成若干段, 在统计出每一段中的读段起始书目后, 使用 $\chi^2$ 统计量, 
 通过 parametric bootrstrap \cite{efron1993introduction} 计算 p-value。 
 
-对于一个转录本, 其长度为
+对于一个转录本, 其长度为 $l$ bp, 读段的长度为 $r$ bp, 
+每个位置 $p=1,2,\ldots,l-r+1$ 上的读段个数为 $n_p$, 
+该转录本上所有的读段个数 $n=\sum_{p=1}^{l-r+1}n_p$, 
+我们所用的统计量为 
+\begin{equation}
+\sum_{p=1}^{l-r+1} \frac{(n_p-\frac{n}{l-r+1})^2}{\frac{n}{l-r+1}}
+\end{equation}
 
 \subsection{结果}
 \subsubsection{检验均匀分布的 p-value}
