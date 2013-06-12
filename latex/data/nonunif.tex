@@ -3,11 +3,12 @@
 
 \section{介绍}
 根据 \ref{len-est-real-rna-seq} 中对于实际 RNA-Seq 数据的分析, 
-我们发现 RNA-Seq 数据并不符合理想的均匀分布. 
-\onlinecite{oshlack2009transcript}, \onlinecite{roberts2011improving}, 
-\onlinecite{20132535}, \onlinecite{21176179}, \onlinecite{20167110}, 和
-\onlinecite{li2010rna} 等也均对 RNA-Seq 实验数据分布的不均匀性进行了研究和讨论
- (图 \ref{rna-seq-bias}). 
+我们发现 RNA-Seq 数据并不符合理想的均匀分布。 
+已有的工作 
+\cite{oshlack2009transcript,roberts2011improving, 
+20132535, 21176179,20167110,li2010rna} 
+也对 RNA-Seq 实验数据分布的不均匀性进行了研究和讨论
+ (图 \ref{rna-seq-bias})。 
 
 \begin{figure}[!t]
 \centering
@@ -19,20 +20,24 @@
 \section{数据分析}
 我们对来自 ENCODE \cite{encode} 的 RNA-Seq 数据 
 \footnote{\url{http://hgdownload.cse.ucsc.edu/goldenPath/hg19/encodeDCC/wgEncodeCaltechRnaSeq/wgEncodeCaltechRnaSeqGm12878R1x75dAlignsRep2V2.bam}} 
-进行了分析, 试图发现 RNA-Seq 数据读段分布的一些规律. 
-在分析中, 我们只对只有一个外显子的基因进行了分析.
+进行了分析, 试图发现 RNA-Seq 数据读段分布的一些规律。 
+在分析中, 我们只对只有一个外显子的基因进行了分析。
 
 \subsection{方法}
 \subsubsection{检验均匀分布的 p-value 的计算}
 给定一个转录本, 在计算检验均匀分布的 p-value 时, 
 我们将转录本划分成若干段, 在统计出每一段中的读段起始书目后, 使用 $\chi^2$ 统计量, 
-通过 parametric bootrstrap \cite{efron1993introduction} 计算 p-value. 
+通过 parametric bootrstrap \cite{efron1993introduction} 计算 p-value。 
+
+对于一个转录本, 其长度为
 
 \subsection{结果}
 \subsubsection{检验均匀分布的 p-value}
 我们对于只有一个外显子的基因中读段的分布计算了检验均匀分布的 p-value, 
 做过 FDR 调整 \cite{benjamini1995controlling} 的 p-value 
-的柱状图如图 \ref{nonunif-adj-unif-pval} 所示. 
+的柱状图如图 \ref{nonunif-adj-unif-pval} 所示。 
+从图 \ref{nonunif-adj-unif-pval} 中我们可以看出, 
+对于我们分析中考虑的大部分基因, 读段分布都是较不均匀的
 
 \begin{figure}[!t]
 \centering
@@ -41,17 +46,17 @@
 \label{nonunif-adj-unif-pval}
 \end{figure}
 
-\subsubsection{RNA-Seq 数据中读段的分布}
-图 \ref{nonunif-read-locations} 中标出了不同的长度的基因, 
-各位置的颜色表示归一化后的的读段个数的值. 
-此处尚未能观察出 RNA-Seq 数据中读段分布不均匀的规律. 
-
-\begin{figure}[!t]
-\centering
-\includegraphics[width=\textwidth]{figures/nonunif/isof_len-vs-reads_distr.pdf}
-\caption{不同长度的基因各位置归一化后的读段个数}
-\label{nonunif-read-locations}
-\end{figure}
+%\subsubsection{RNA-Seq 数据中读段的分布}
+%图 \ref{nonunif-read-locations} 中标出了不同的长度的基因, 
+%各位置的颜色表示归一化后的的读段个数的值. 
+%此处尚未能观察出 RNA-Seq 数据中读段分布不均匀的规律. 
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=\textwidth]{figures/nonunif/isof_len-vs-reads_distr.pdf}
+%\caption{不同长度的基因各位置归一化后的读段个数}
+%\label{nonunif-read-locations}
+%\end{figure}
 
 
 
