@@ -5,7 +5,7 @@
 %%% End:
 \secretlevel{} \secretyear{}
 
-\ctitle{通过 RNA-Seq 估计转录本长度和转录组组成的研究}
+\ctitle{通过 RNA-Seq 估计转录本长度和辨识剪切异构体的研究}
 % 根据自己的情况选，不用这样复杂
 \makeatletter
 \ifthu@bachelor\relax\else
@@ -34,7 +34,7 @@
 % \cseconddiscipline{系统结构}
 % \postdoctordate{2009年7月——2011年7月}
 
-\etitle{Research on using RNA-Seq to estimate transcript length and transcriptome composition} 
+\etitle{Research on using RNA-Seq to estimate transcript length and identify isoforms} 
 % 这块比较复杂，需要分情况讨论：
 % 1. 学术型硕士
 %    \edegree：必须为Master of Arts或Master of Science（注意大小写）
@@ -60,11 +60,20 @@
 
 % 定义中英文摘要和关键字
 \begin{cabstract}
-	RNA-Seq 是最近几年发展起来的通过高通量测序对转录组中的序列进行测序的一种技术. 
+	RNA-Seq 是最近几年发展起来的通过高通量测序对转录组中的序列进行测序的一种技术。 
 	RNA-Seq 技术的发展使得人们在最近几年当中对于生物中的基因表达的规律, 
-	以及基因组上的功能模块有了更为深入的了解. 
-	我们在这里介绍一个通过 RNA-Seq 数据对转录本的长度进行估计的统计方法. 
-	同时, 我们证明了用最大似然的方法通过真核生物 RNA-Seq 数据估计转录组中转录本的组成的问题一个 NP 问题. 
+	以及基因组上的功能模块有了更为深入的了解。 
+	在通过 RNA-Seq 数据确定基因的表达量时, 我们需要知道基因序列的长度。 
+	但是在没有基因注释或者没有基因组参考序列时, 我们需要一种得知基因的长度的方法。
+	我们在这里提出一个通过 RNA-Seq 数据对转录本的长度进行估计的统计方法。 
+	通过该方法, 我们可以在基因组参考序列没有基因注释信息, 以及没有基因组参考序列, 
+	的情况下使用 RNA-Seq 数据估计出转录本的长度。
+	同时, 在 RNA-Seq 数据中我们发现读段的分布位置不均匀。
+	此处我们对 RNA-Seq 数据中读段分布的不均匀性做了初步的分析。
+	此外, 真核生物的基因在有多个外显子的情况下会有选择性剪切的现象发生, 
+	同一个基因可能会产生多个剪切异构体。
+	通过 RNA-Seq 数据我们可以辨别一个基因的不同的剪切异构体。
+	这里我们证明用最大似然的方法通过真核生物 RNA-Seq 数据辨识基因的剪切异构体是一个 NP 难问题。
 \end{cabstract}
 
 \ckeywords{RNA-Seq, 转录组, 转录本}
@@ -73,8 +82,16 @@
 	RNA-Seq is a technology developed in the last few years for sequencing the transcriptome using high throughput sequencing. 
 	Using RNA-Seq, people have gained much deeper understanding of gene expression patterns, 
 	and functional modules in genomes. 
+	When estimating a transcript's expression level with RNA-Seq, 
+	we need to know the length of the transcript's sequence. 
+	However, when no annotations or reference genome sequences are available, 
+	we need another method to know the transcript's length. 
 	Here, we present a statistical method to estimate transcript length using RNA-Seq. 
-	And, we prove that using eukaryotic RNA-Seq data to estimate the composition of transcripts in the transcriptome by maximum likelihood is NP-hard.
+	Using this method, we can estimate a transcript's length when no annotations are available for the reference genome sequences, or when the reference genome sequences are not available. 
+	We also observed that RNA-Seq reads are non-uniformly distributed. 
+	Here, We present a preliminary analysis on the non-uniform distribution of RNA-Seq reads. 
+	And it has been observed in eukaryotes a gene with multiple exons can correspond to multiple isoforms due to alternative splicing. With RNA-Seq, we can determine a gene's isoroms. 
+	Here, we prove that using eukaryotic RNA-Seq data to identify a gene's isoforms by maximum likelihood is NP-hard.
 \end{eabstract}
 
 \ekeywords{RNA-Seq, transcriptome, transcript}
