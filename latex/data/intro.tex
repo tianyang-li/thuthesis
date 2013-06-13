@@ -78,7 +78,7 @@ RNA-Seq 通常直接用于对于这些生物问题的研究:
 
 \item 序列拼装: 
 直接将 RNA-Seq 读段拼装成原转录组的各转录本。 若拼装时不依赖已知的参考序列, 
-则成为 \textit{de novo} 拼装 ((\textit{de novo} assembly)) 
+则成为 \textit{de novo} 拼装 (\textit{de novo} assembly) 
 
 \item 转录本的表达量估计: 用一定的单位表示每个被测样本中转录组里每个转录本的含量, 
 用于在不同的样本之间进行比较
@@ -273,7 +273,7 @@ e^{-\Phi}\prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 \begin{itemize}
 \item BIC (Bayesian information criterio) \cite{BIC.Schwarz_1978}: 
 \[
-\Phi = \frac{\sum_{i \in I, \theta_i>0} 1}{2} \log |R|
+\Phi = \frac{\sum_{i \in I, \theta_i\neq 0} 1}{2} \log |R|
 \]
 \end{itemize}
 NSMAP 和 iReckon 均使用的是 Lasso, 

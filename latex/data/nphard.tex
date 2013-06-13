@@ -115,7 +115,7 @@ $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义。
 \begin{itemize}
 \item $L_0$ 正则化:
 \[
-\Phi = \Lambda \sum_{i \in I, \lambda_i >0} 1
+\Phi = \Lambda \sum_{i \in I, \lambda_i \neq 0} 1
 \]
 其中 $\Lambda \geq 0$ 是一个常数。 
 
@@ -201,9 +201,10 @@ M-ISOFORM 是一个 NP 完全问题。
 \section{证明}
 
 下面我们给出定理 \ref{m-isoform-np-hard}, 说明 M-ISOFORM 是一个 NP 完全问题。 
-定理 \ref{m-isoform-np-hard} 的证明主要受到了 \onlinecite{Tomescu.recomb.seq.2013} 的启发, 
+定理 \ref{m-isoform-np-hard} 的证明主要受到了 
+Tomescu et al. 在 \onlinecite{Tomescu.recomb.seq.2013} 的工作的启发, 
 将通过 RNA-Seq 数据辨识基因的剪切异构体的问题看作是一个网络流问题。 
-证明中我们采用了一个类似 \onlinecite{Vatinlen20081390} 的方法, 
+证明中我们采用了一个类似 Vatinlen et al. 在 \onlinecite{Vatinlen20081390} 中所使用的方法, 
 将 3-PARTITION \cite{doi:10.1137/0204035, Garey:1990:CIG:574848} 规约到 M-ISOFORM。 
 
 \begin{proof}
@@ -233,8 +234,9 @@ M-ISOFORM 是一个 NP 完全问题。
 (注意到每个 $X_i$ 必须包含恰好 3 个来自 $X$ 的元素)?
 \end{tripart}
 
-根据 \onlinecite{doi:10.1137/0204035} 和 \onlinecite{Garey:1990:CIG:574848}, 
-3-PARTITION 是强 NP 完全的, 
+根据 Garey 和 Johnson 在 \onlinecite{doi:10.1137/0204035} 中以及 
+Garey 和 Johnson 在 \onlinecite{Garey:1990:CIG:574848} 的工作, 
+我们可以知道 3-PARTITION 是强 NP 完全的, 
 即 3-PARTITION 的输入用 unary 表示时 3-PARTITON 仍然是 NP 完全的。 
 
 我们下面将用 unary 输入的一个 3-PARTITION 实例在多项式时间内规约到一个 M-ISOFORM 实例。 

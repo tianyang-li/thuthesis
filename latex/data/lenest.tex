@@ -162,7 +162,8 @@ P(X = i) =  \begin{cases}
 \[
 P(D=i) = (L-D +1) \frac{ D^N - 2 (D-1)^N  + (\max(D-2,0))^N}{ L^N }
 \]
-从而
+
+从而我们可以知道 $\hat{L}$ 是无偏的
 \begin{align*}
 \operatorname{E}[\hat{L}] &= \sum_{i=1}^L P(D=i) 
     \frac{i^{N+1}-2(i-1)^{N+1}+(\max(i-2,0))^{N+1}}{i^N-2(i-1)^N+(\max(i-2,0))^N} \\
