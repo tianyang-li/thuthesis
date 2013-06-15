@@ -28,14 +28,9 @@ berezikov2010evolutionary, cherbas2011transcriptional, anders2012detecting,
 stoeckius2009large, lau2009abundant}
 
 在 RNA-Seq 技术出现之前, 人们主要通过微阵列 (microarray) 对转录组进行定量分析和研究 \cite{schena1995quantitative}。 
-但是与 RNA-Seq 相比, 微阵列存在若干问题 \cite{wang2009rna}: 
-\begin{itemize}
-\item 微阵列只能在序列已知的情况下使用
-
-\item 结果会受交叉杂交 (cross-hybridization) 影响 \cite{okoniewski2006hybridization, royce2007toward}
-
-\item 测量的表达量范围有限
-\end{itemize}
+但是与 RNA-Seq 相比, 微阵列存在若干问题 \cite{wang2009rna}, 例如微阵列只能在序列已知的情况下使用, 
+微阵列的结果会受交叉杂交 (cross-hybridization) 影响 \cite{okoniewski2006hybridization, royce2007toward}, 
+以及微阵列测量的表达量范围有限等。
 另外, 在 RNA-Seq 技术出现之前, 人们主要通过 Sanger 测序法对互补 DNA (cDNA) 序列或者表达序列标签库 (EST libraries) 进行测序来研究转录组的序列 \cite{boguski1994gene, gerhard2004status}。 
 但是 Sanger 测序价格昂贵, 同时测序通量与新的测序技术 (例如 Illumina 的测序技术) 相比偏低, 
 无法对转录组进行定量分析和研究。 
@@ -47,29 +42,33 @@ stoeckius2009large, lau2009abundant}
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/rna-seq-experiment.jpg}
-\caption{一般的 RNA-Seq 实验流程 \cite{wang2009rna}}
+\caption[一般的 RNA-Seq 实验流程 \cite{wang2009rna}]{一般的 RNA-Seq 实验流程 \cite{wang2009rna}: 
+长的 RNA 首先被打断成为 cDNA 库, 然后通过测序得到短的读段。
+然后这些读段被比对到基因组参考序列上。}
 \label{intro-rna-seq-ex}
 \end{figure}
 
 \begin{figure}[!t]
 \centering
-\includegraphics[height=\textheight]{figures/tuxedo-protocol-tophat-cufflinks.jpg}
-\caption{一般的通过 TopHat \cite {trapnell2009tophat} 和 Cufflinks 
-\cite{cufflinks.2010} 分析 RNA-Seq 数据的流程 \cite{trapnell2012differential}}
+\includegraphics[height=0.85\textheight]{figures/tuxedo-protocol-tophat-cufflinks.jpg}
+\caption[一般的通过 TopHat \cite {trapnell2009tophat} 和 Cufflinks 
+\cite{cufflinks.2010} 分析 RNA-Seq 数据的流程 \cite{trapnell2012differential}]
+{一般的通过 TopHat \cite {trapnell2009tophat} 和 Cufflinks 
+\cite{cufflinks.2010} 分析 RNA-Seq 数据的流程 \cite{trapnell2012differential}: 
+在一个有两种不同的条件的实验中, 读段首先被 TopHat 比对到基因组参考序列上, 
+然后 Cufflinks 根据 TopHat 的比对结果组装转录本, 并且估计每一个转录本的表达量, 
+最后对两个不同的条件做基因差异表达分析。}
 \label{intro-rna-seq-anal}
 \end{figure}
 
 \section{RNA-Seq 数据分析方法简介}
-RNA-Seq 通常直接用于对于这些生物问题的研究:
-\begin{itemize}
-\item 发现新的剪切异构体 \cite{merkin2012evolutionary, wang2010novo, roberts2011identification, wang2010mapsplice}
-
-\item 研究 RNA 序列的对于生物的调控作用 \cite{van2011xuts}
-
-\item 比较不同条件下转录组不同的构成 \cite{trapnell2012differential}
-\end{itemize}
+RNA-Seq 通常直接用于发现新的剪切异构体 
+\cite{merkin2012evolutionary, wang2010novo, roberts2011identification, wang2010mapsplice}, 
+研究 RNA 序列的对于生物的调控作用 \cite{van2011xuts}
+以及比较不同条件下转录组不同的构成 \cite{trapnell2012differential}
+等生物问题的研究。
 同时, RNA-Seq 数据还未研究其他生物问题提供了宝贵的原始数据, 
-例如对于生物系统中的网络的研究 \cite{sinicropi2012whole}。 
+例如对于生物系统中的网络的研究 \cite{shalek2013single,sinicropi2012whole}。 
 
 为了能够通过 RNA-Seq 数据对生物问题有深入的研究, 
 我们通常会对 RNA-Seq 数据用这些方法进行处理:
@@ -91,35 +90,30 @@ RNA-Seq 通常直接用于对于这些生物问题的研究:
 经典的序列比对算法包括 Smith-Waterman 算法 \cite{SmithWaterman1981} 和 Needleman-Wunsch 算法 \cite{needleman1970general}。 
 但是由于 Smith-Waterman 算法和 Needleman-Wunsch 算法复杂度偏高, 它们不适用于大规模的数据。 
 目前人们一般采用一些启发式的方法进行序列比对 \cite{isaev2004introduction}。 
-对于将 RNA-Seq 读段比对到其在基因组中的位置, 目前比较常用的工具包括: 
-\begin{itemize}
-\item BLAT \cite{kent2002blat}
-\item TopHat \cite{trapnell2009tophat}
-\end{itemize}
+对于将 RNA-Seq 读段比对到其在基因组中的位置, 目前比较常用的工具是 
+BLAT \cite{kent2002blat}
+和 TopHat \cite{trapnell2009tophat}。
 
 \subsection{序列拼装}
 序列拼装是生物信息学和计算生物学中一个经典的问题, 
-其目的是通过测序的读段恢复出原始的生物序列。 对于序列拼装, 目前人们主要采用一下这两种常用的策略: 
-\begin{itemize}
-\item OLC (overlap-layout-consensus) \cite{greenphrap, bonfield1995new, 
+其目的是通过测序的读段恢复出原始的生物序列。 对于序列拼装, 目前人们主要采用 
+OLC (overlap-layout-consensus) \cite{greenphrap, bonfield1995new, 
 kececioglu1995combinatorial, myers1995toward, huang1999cap3}
+和 de Bruijn 图 \cite{pevzner2001eulerian} 
+这两种常用的策略。
 
-\item de Bruijn 图 \cite{pevzner2001eulerian}
-\end{itemize}
-
-目前对于 RNA-Seq 数据的拼装主要有这些常用的工具: 
-\begin{itemize}
-\item Cufflinks \cite{cufflinks.2010}: 
-OLC 策略 (图 \ref{intro-cufflinks-assembly})
-
-\item Trinity \cite{grabherr2011full}: 
-de Bruijn 图策略 (图 \ref{intro-trinity-assembly})
-\end{itemize}
+目前对于 RNA-Seq 数据的拼装主常用的工具是 
+Cufflinks \cite{cufflinks.2010} 和 Trinity \cite{grabherr2011full}。
+其中 Cufflinks 拼装序列时使用的是 OLC 策略 (图 \ref{intro-cufflinks-assembly}), 
+而 Trinity \cite{grabherr2011full} 拼装序列时使用的是 
+de Bruijn 图策略 (图 \ref{intro-trinity-assembly})。
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/trinity-assembly.jpg}
-\caption{Trinity 拼装策略 \cite{grabherr2011full}}
+\caption[Trinity 拼装策略 \cite{grabherr2011full}]
+{Trinity 拼装策略 \cite{grabherr2011full}: Trinity 拼装序列时使用的是 
+de Bruijn 图策略}
 \label{intro-trinity-assembly}
 \end{figure}
 
@@ -130,16 +124,16 @@ RNA-Seq 技术的发展对于转录本表达量的估计有很大的帮助。
 在 RNA-Seq 实验中, 
 通常使用 RPKM (reads per kilobase per million reads sequenced) 
 \cite{mortazavi2008mapping} 作为一个转录本表达量的单位。 
-目前在 RNA-Seq 实验中通常使用的转录本表达量估计的工具包括: 
-\begin{itemize}
-\item Cufflinks \cite{cufflinks.2010} (图 \ref{intro-cufflinks-abundance})
-\item RSEM \cite{li2011rsem}
-\end{itemize}
+目前在 RNA-Seq 实验中通常使用的转录本表达量估计的工具是 
+Cufflinks \cite{cufflinks.2010} (图 \ref{intro-cufflinks-abundance})
+和 RSEM \cite{li2011rsem}。
 
 \begin{figure}[!t]
 \centering
 \includegraphics[height=0.5\textheight]{figures/cufflinks-abundance.jpg}
-\caption{Cufflinks 对转录本的表达量的估计 \cite{cufflinks.2010}}
+\caption[Cufflinks 对转录本的表达量的估计 \cite{cufflinks.2010}]
+{Cufflinks 对转录本的表达量的估计 \cite{cufflinks.2010}: 
+Cufflinks 使用一个多项式模型通过最大似然对转录本的表达量进行估计}
 \label{intro-cufflinks-abundance}
 \end{figure}
 
@@ -155,7 +149,10 @@ Cufflinks \cite{cufflinks.2010} (图 \ref{intro-cufflinks-assembly})。
 \begin{figure}[!t]
 \centering
 \includegraphics[height=0.5\textheight]{figures/cufflinks-assembly.jpg}
-\caption{Cufflinks 序列拼装策略和对同一个基因的剪切异构体的辨识 \cite{cufflinks.2010}}
+\caption[Cufflinks 序列拼装策略和对同一个基因的剪切异构体的辨识 \cite{cufflinks.2010}]
+{Cufflinks 序列拼装策略和对同一个基因的剪切异构体的辨识 \cite{cufflinks.2010}: 
+Cufflinks 拼装序列时使用的是 OLC 策略。
+另外，Cufflinks 通过在读段位置关系构成的图中寻找一个最小路径覆盖来辨识一个基因的剪切异构体。}
 \label{intro-cufflinks-assembly}
 \end{figure}
 
@@ -213,8 +210,7 @@ q(\text{$r$ 比对到 $i$ 上的起始位置},i) & \text{当 $r$ 能比对到 $i
 
 \item 所有的读段都是独立的。 
 \end{itemize}
-
-由以上我们可以得到观察到所有读段 $R$ 的似然函数: 
+由以上我们给出到观察到所有读段 $R$ 的似然函数 \cite{2011arXiv1104.3889P}: 
 \begin{equation}
 \label{rna-seq-general-likelihood}
 L(R) = \prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
@@ -228,20 +224,12 @@ L(R) = \prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 我们可以通过过优化通过式 \eqref{rna-seq-general-likelihood} 中的似然函数, 
 或者其他的目标函数, 在进行剪切异构体集合 $I$ 的辨识的同时对各转录本的表达量进行估计 
 \cite{xing2006expectation}。 
-已发表的方法包括: 
-\begin{itemize}
-\item NSMAP \cite{nsmap.21575225}
-
-\item IsoLasso \cite{isolasso.recomb}
-
-\item CEM \cite{Li15112012}
-
-\item iReckon \cite{Mezlini29112012}
-
-\item SLIDE \cite{Li13122011}
-
-\item Montebello \cite{Hiller.Montebello}
-\end{itemize}
+已发表的方法包括 NSMAP \cite{nsmap.21575225}, 
+IsoLasso \cite{isolasso.recomb}, 
+CEM \cite{Li15112012}, 
+iReckon \cite{Mezlini29112012}, 
+SLIDE \cite{Li13122011}, 和 
+Montebello \cite{Hiller.Montebello}。
 
 下面我们对若干已发表的通过 RNA-Seq 数据进行转录本表达量估计和剪切异构体辨识的工具进行介绍。 
 
@@ -261,7 +249,7 @@ Cufflinks 通过在读段之间定义一个序,
 \label{intro-nsmap-cem-ireckon-montebllo}
 
 NSMAP, CEM, iReckon, 和 Montebello 这 4 个工具是同时进行剪切异构体的辨识和转录本表达量的估计的。 
-由于一个基因可能的剪切异构体的个数相当的多, NSMAP, CEM, iReckkkon, 和 Montebello 
+由于一个基因可能的剪切异构体的个数相当的多, NSMAP, CEM, iReckon, 和 Montebello 
 采用了带惩罚项的似然函数进行剪切异构体的辨识和转录本表达量的估计。 
 其具体做法是对式 \eqref{rna-seq-general-likelihood} 中的似然函数增加一个惩罚项, 
 变为求剪切异构体的集合 $I$ 和它们的表达量 $\theta_I$ 使得
@@ -269,13 +257,9 @@ NSMAP, CEM, iReckon, 和 Montebello 这 4 个工具是同时进行剪切异构�
 e^{-\Phi} L(R) = 
 e^{-\Phi}\prod_{r \in R} (\sum_{i \in I} a_{ri} \theta_i)
 \end{equation}
-最大化, 其中 $\Phi \geq 0$ 是一个惩罚项, 可以使用以下这些方法等: 
-\begin{itemize}
-\item BIC (Bayesian information criterio) \cite{BIC.Schwarz_1978}: 
-\[
-\Phi = \frac{\sum_{i \in I, \theta_i\neq 0} 1}{2} \log |R|
-\]
-\end{itemize}
+最大化, 其中 $\Phi \geq 0$ 是一个惩罚项, 可以使用 BIC (Bayesian information criterio) \cite{BIC.Schwarz_1978}  
+($\Phi = \frac{\sum_{i \in I, \theta_i\neq 0} 1}{2} \log |R|$) 等方法。
+
 NSMAP 和 iReckon 均使用的是 Lasso, 
 而 CEM 则使用了一个 Dirichlet 分布作为先验概率。
 NSMAP, CEM, 和 iReckon 在计算时采用的策略均是枚举所有剪切异构体集合 $I$ 中的可能的剪切异构体。 

@@ -25,7 +25,6 @@
 \item 读段的 5' 段位置 (以下称之为起始位置) 在原转录本上的分布是均匀的。 
 同样的, 读段的 3' 段位置 (以下称之为终止位置) 在原转录本上的分布也是均匀的 
 \end{itemize}
-
 此处为了方便我们的讨论, 我们还假设: 
 \begin{itemize}
 \item 所有的读段的长度都是相同的, 为 $R$ bp 长
@@ -347,7 +346,8 @@ P(N_D=j) = (1-q)^{R-1}(1-(1-q)^{R-1})^{j},\ j=0,1,\ldots
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/lenest/real-len-VS-est-len.pdf}
-\caption{实际的转录本长度和估计的转录本长度的比较}
+\caption[实际的转录本长度和估计的转录本长度的比较]
+{实际的转录本长度和估计的转录本长度的比较: 每一个点代表一个转录本。}
 \label{real-len-VS-est-len}
 \end{figure}
 
@@ -355,9 +355,8 @@ P(N_D=j) = (1-q)^{R-1}(1-(1-q)^{R-1})^{j},\ j=0,1,\ldots
 ($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 
 和测序 $\lambda$ 
 之间的关系。
-通过图 \ref{len-ratio-VS-lambda} 中无法看出估计的转录本长度和真实的转录本长度之比 
-($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 
-和测序 $\lambda$ 之间有明显的关系。
+通过图 \ref{len-ratio-VS-lambda} 中无法看出估计的转录本长度和真实的转录本长度之比和测序 
+$\lambda$ 之间有明显的关系。
 
 \begin{figure}[!t]
 \centering
@@ -373,28 +372,33 @@ P(N_D=j) = (1-q)^{R-1}(1-(1-q)^{R-1})^{j},\ j=0,1,\ldots
     \end{subfigure}
 
 
-\caption{估计的转录本长度和真实的转录本长度之比 
+\caption[估计的转录本长度和真实的转录本长度之比 
 ($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 
 和测序 $\lambda$ 
-之间的关系}
+之间的关系]
+{估计的转录本长度和真实的转录本长度之比 
+($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 
+和测序 $\lambda$ 
+之间的关系: 每一个点代表一个转录本。从该图中无法看出二者之间有明显的关系。}
 \label{len-ratio-VS-lambda}
 \end{figure}
 
 图 \ref{len-ratio-VS-pval} 给出了估计的转录本长度和真实的转录本长度之比 
-($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 
-和第 \ref{chap-rna-seq-nonunif} 章中计算得的检验均匀分布经过 FDR 调整的 p-value  
-之间的关系。
-通过图 \ref{len-ratio-VS-pval} 中无法看出估计的转录本长度和真实的转录本长度之比 
-($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 
-和和第 \ref{chap-rna-seq-nonunif} 章中计算得的检验均匀分布经过 FDR 调整的 p-value 之间有明显的关系。
+($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 和第 
+\ref{chap-rna-seq-nonunif} 章中计算得的检验均匀分布经过 FDR 调整的 p-value 之间的关系。
+通过图 \ref{len-ratio-VS-pval} 中无法看出估计的转录本长度和真实的转录本长度之比和和第 
+\ref{chap-rna-seq-nonunif} 章中计算得的检验均匀分布经过 FDR 调整的 p-value 之间有明显的关系。
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/lenest/len_ratio-VS-pval.pdf}
-\caption{估计的转录本长度和真实的转录本长度之比 
+\caption[估计的转录本长度和真实的转录本长度之比和和第 
+\ref{chap-rna-seq-nonunif} 章中计算得的检验均匀分布经过 FDR 调整的 p-value 
+之间的关系]
+{估计的转录本长度和真实的转录本长度之比 
 ($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 
 和和第 \ref{chap-rna-seq-nonunif} 章中计算得的检验均匀分布经过 FDR 调整的 p-value 
-之间的关系}
+之间的关系: 每一个点代表一个转录本。从该图中无法看出二者之间有明显的关系。}
 \label{len-ratio-VS-pval}
 \end{figure}
 

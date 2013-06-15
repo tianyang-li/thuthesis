@@ -13,7 +13,10 @@
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/nonunif/rna-seq-bias.jpg}
-\caption{实际 RNA-Seq 数据中读段的位置分布 \cite{wang2009rna}}
+\caption[实际 RNA-Seq 数据中读段的位置分布 \cite{wang2009rna}]
+{实际 RNA-Seq 数据中读段的位置分布 \cite{wang2009rna}: 
+在 RNA-Seq 实验中, 使用 cDNA 打断方式时读段的位置更靠近 3' 端, 
+使用 RNA 打断方式时读段的位置更多地集中在转录本的中间。}
 \label{rna-seq-bias}
 \end{figure}
 
@@ -48,7 +51,9 @@
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/nonunif/padj-hist.pdf}
-\caption{FDR 调整 \cite{benjamini1995controlling} 后的检验均匀分布的 p-value}
+\caption[FDR 调整 \cite{benjamini1995controlling} 后的检验均匀分布的 p-value]
+{FDR 调整 \cite{benjamini1995controlling} 后的检验均匀分布的 p-value: 
+对于大部分的转录本, 读段的分布都是较不均匀的。}
 \label{nonunif-adj-unif-pval}
 \end{figure}
 
