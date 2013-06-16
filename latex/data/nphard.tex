@@ -2,7 +2,7 @@
 \label{chap-rna-seq-nphard}
 
 \section{问题描述}
-在真核生物 RNA-Seq 数据处理过程当中, 重要的一步是通过 RNA-Seq 数据估计出基因的转录组。 
+在真核生物 RNA-Seq 数据处理过程当中, 重要的一步是通过 RNA-Seq 数据识基因的不同的剪切异构体。 
 由于在真核生物的转录过程当中会有选择性剪切的现象发生, 一个基因可能转录出多个剪切异构体。 
 在这种情况下, 我们需要通过 RNA-Seq 数据辨识出基因的不同的剪切异构体。 
 
@@ -60,7 +60,7 @@ $i \in I$ 是剪切异构体 $i$ 的表达量。
 
 在这里, 我们假设所有的 RNA-Seq 数据均是单端读段, 且长度均为 $k$。 
 (对于长度不均的读段或者双端测序的读段我们可以采用与这里类似的方法进行处理, 
-此处不再赘述, 感兴趣的读者可以参看 \onlinecite{cufflinks.2010}) 
+此处不再赘述, 感兴趣的读者可以参看 \onlinecite{cufflinks.2010}。) 
 一个读段对应到剪切图中时, 该读段对应到原转录本上的每一个外显子在剪切图中所对应的节点, 
 同时在读段经过多个外显子时该读段也会经过剪切图中所对应的边。 
 为了描述的方便, 我们把每一个读段对应在原转录本上的 5' 端的位置称之为该读段的起始位置, 
@@ -84,14 +84,14 @@ $i \in I$ 是剪切异构体 $i$ 的表达量。
 $a_{pi}$ 是已知的。 
 对于理想的情况我们认为对于所有的基因中的位置 $p$ 和剪切异构体 $i\in I$, 
 我们均有 $a_{pi}=1$。 
-通过不同的位置和不同的剪切异构体 $i\in I$ 的 $a_{pi}$, 
+通过设定不同的位置和不同的剪切异构体 $i\in I$ 的 $a_{pi}$, 
 我们可以对 RNA-Seq 实验中存在的不均匀性进行建模。 
 为了方便下面的陈述, 我们记基因中所有可以有读段起始的位置的集合记作 $P$。 
 (例如, 对于一个只有一个外显子的基因, 其长度为 $L$, 
 $P$ 由该基因上的前 $L-k+1$ 个位置组成。)
 
 同时, 我们假设对于该基因中不同的位置, 
-在这些位置起始的读段的个数的分布式独立的。 
+在这些位置起始的读段的个数的分布是独立的。 
 
 根据上面的描述, 我们得出观察到 RNA-Seq 读段的似然函数
 \begin{equation}
@@ -100,7 +100,7 @@ L(R)= \prod_{p\in P} \frac{{\lambda_p}^{N(p)} e^{-\lambda_p}}{N(p)!}
 \end{equation}
 其中 $N(p)$ 是在位置 $p\in P$ 所管查到的在该位置起始的读段的数目, 
 $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义。 
-注意到 $|R|=\sum_{p\in P}N_p$
+注意到 $|R|=\sum_{p\in P}N_p$。
 
 根据式 \eqref{rna-seq-data-poisson-likelihood} 中所给出来的似然函数, 
 我们可以通过最大化该似然函数确定该基因的剪切异构体的集合 $I$, 
@@ -155,7 +155,7 @@ $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义。
 \begin{align}
 \max &\ L(R) =  \prod_{p\in P} \frac{{\lambda_p}^{N(p)} e^{-\lambda_p}}{N(p)!} \nonumber \\
 \label{rna-seq-data-likelihood-1}
-\text{s.t.} &\  \sum_{i \in I, \lambda_i>0} 1 \leq t
+\text{s.t.} &\  \sum_{i \in I, \lambda_i>0} 1 \neq t
 \end{align}
 其中 $t\geq 0$ 是一个常数。 
 
@@ -201,10 +201,14 @@ $R$ 中的读段解释)。 常数 $q \in \mathbb{R}$, $m \in \mathbb{Z}^+$。
 在实数 RAM 模型 \cite{Preparata:1985:CGI:4333} 下, 
 我们下面的定理说明了 M-ISOFORM 是一个 NP 完全问题。 
 
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
 \begin{thm}
 \label{m-isoform-np-hard}
 M-ISOFORM 是一个 NP 完全问题。
 \end{thm}
+}}
+\end{center}
 
 \section{证明}
 
