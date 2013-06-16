@@ -16,7 +16,7 @@
 此外, 第 \ref{chap-lenest} 章中所介绍的方法并没有考虑 RNA-Seq 
 数据中读段分布受转录本序列以及转录本长度等因素造成的分布不均匀性。 
 另外, 第 \ref{chap-lenest} 章中所介绍的方法也未考虑读段分布的非独立性。 
-这些问题都是需要进一步继续的研究来解决的。 
+这些问题需要进一步的研究来解决。 
 
 \section{通过真核生物 RNA-Seq 数据估计基因的转录组}
 根据第 \ref{chap-rna-seq-nphard} 章中的讨论, 
@@ -28,7 +28,7 @@
 RNA-PET \cite{Fullwood01042009} 技术可以对直接用来确定转录本的 5' 端和 3' 端, 
 另外更长的测序读段 (例如 PacBio 研发的单分子测序技术 \cite{hybrid.rna.seq.2012})
 可以帮助我们在测序数据得到后不需要使用类似第 \ref{chap-rna-seq-nphard} 
-章给出的复杂的方法就能简单地直接从数据中确定转录组由哪些转录本组成。 
+章给出的复杂的方法就能简单地直接从数据中辨识基因的剪切异构体。 
 
 \section{现有 RNA-Seq 数据处理方法中存在的一些问题}
 目前已有的用于 RNA-Seq 数据辨识基因的剪切异构体和估计表达量的方法 
@@ -82,7 +82,7 @@ Fullwood et al. 在 \onlinecite{Fullwood01042009} 中介绍了 RNA-PET 技术。
 的平台上通过高通量测序得到的大量的短读段结合在一起进行分析 \cite{hybrid.rna.seq.2012}。 
 
 我们需要开发出新的生物信息工具能够针对新的测序技术提供的更长的读段进行处理, 
-比较重要的包括针对新的测序技术的序列比对工具和针对新的测序技术的序列拼装工具
+其中主要包括针对新的测序技术的序列比对工具和针对新的测序技术的序列拼装工具
 
 \subsection{原核生物}
 原核生物的 RNA-Seq 数据分析对于对于我们研究微生物中的基因表达是十分有意义的。 
@@ -97,14 +97,14 @@ lesniewski2012metatranscriptome}。
 (图 \ref{e.coli.lactose.operon})。 
 最近几年的研究表明 \cite{MarcGuell11272009, koide2009prevalence}, 
 原核生物在不同的环境条件下在基因组的同一段区域可能产生不同的操纵子。 
-通过 RNA-Seq 数据辨识原核生物操纵子也将可能成为原核生物 RNA-Seq 数据分析中的重要的一步。 
+通过 RNA-Seq 数据辨识原核生物操纵子也将可能成为原核生物 RNA-Seq 数据分析中重要的一步。 
 
 另外, 在原核生物的转录组中有大量的 rRNA (ribosomal RNA)。  
 在 RNA-Seq 实验中, 
 rRNA 和其他种类的 RNA (例如 mRNA) 相比起来 rRNA 含量可能超过 
 90\% \cite{giannoukos2012efficient}。 
 此时, rRNA 的含量会对于研究其他种类的 RNA 产生较大的负面影响。 
-目前 \onlinecite{giannoukos2012efficient} 中使用了一种新的实验技术, 
+目前 Giannoukos et al. 在 \onlinecite{giannoukos2012efficient} 中使用了一种新的实验技术, 
 可以在测序前减少样本中 rRNA 的含量。 
 
 \begin{figure}[!t]
@@ -121,7 +121,7 @@ rRNA 和其他种类的 RNA (例如 mRNA) 相比起来 rRNA 含量可能超过
 同时证明了使用真核生物 RNA-Seq 数据通过最大似然辨识基因的剪切异构体是一个 NP 难问题。
 我们期待测序技术的发展能够缓解 RNA-Seq 数据中读段分布不均匀的现象。
 此外, 我们期待新的测序技术的的发展能够降低测序数据计算处理的要求, 
-同时方便我们对生物问题进行研究。
+同时方便我们通过 RNA-Seq 技术对生物问题进行研究。
 
 
 
