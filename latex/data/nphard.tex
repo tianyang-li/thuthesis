@@ -20,15 +20,20 @@
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/nphard/comp1.png}
-\caption{一个基因的比对到基因组参考序列上的 RNA-Seq 数据}
+\caption[一个基因的比对到基因组参考序列上的 RNA-Seq 数据]
+{一个基因的比对到基因组参考序列上的 RNA-Seq 数据: 
+根据每一个读段比对到基因组参考序列上的位置可以确定其所对应的剪切异构体。}
 \label{nphard.ex1.aligned.data}
 \end{figure}
 
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\textwidth]{figures/nphard/comp1.pdf}
-\caption{图 \ref{nphard.ex1.aligned.data} 中所示的基因和 
-RNA-Seq 数据通过 Trinity \cite{grabherr2011full} 拼装得到的剪切图}
+\caption[图 \ref{nphard.ex1.aligned.data} 中所示的基因和 
+RNA-Seq 数据通过 Trinity \cite{grabherr2011full} 拼装得到的剪切图]
+{图 \ref{nphard.ex1.aligned.data} 中所示的基因和 
+RNA-Seq 数据通过 Trinity \cite{grabherr2011full} 拼装得到的剪切图: 
+该基因的一个剪切异构体是这个图中的一条路径。}
 \label{nphard.ex1.splicing.graph}
 \end{figure}
 
@@ -168,14 +173,17 @@ $\lambda_p$ 如式 \eqref{rna-seq-data-position-lambda} 中所定义。
 
 给出了这些观察之后, 我们可以将此处通过 RNA-Seq 数据估计转录组中转录本的问题, 
 也即基因的剪切异构体的辨识的问题, 转换为一个判定问题:
-\begin{itemize}
-\item 给定一个阈值, 
-能不能找到一个剪切异构体的集合以及这些转录本的表达量使得似然函数的值大于该阈值?
-\end{itemize}
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{给定一个阈值, 
+能不能找到一个剪切异构体的集合以及这些转录本的表达量使得似然函数的值大于该阈值?}}
+\end{center}
+
 下面我们采用前面 \ref{nphard-model} 中所使用的符号来描述判定问题 M-ISOFORM。 
 
 \newtheorem*{misof}{M-ISOFORM}
 
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
 \begin{misof}
 \hspace*{1mm}
 
@@ -189,6 +197,8 @@ $R$ 中的读段解释)。 常数 $q \in \mathbb{R}$, $m \in \mathbb{Z}^+$。
 并且对每一个读段 $r \in R$ 均存在至少一个该基因的剪切异构体 $i\in I$ 
 让读段 $r$ 来自剪切异构体 $i$?
 \end{misof}
+}}
+\end{center}
 
 在实数 RAM 模型 \cite{Preparata:1985:CGI:4333} 下, 
 我们下面的定理说明了 M-ISOFORM 是一个 NP 完全问题。 
@@ -221,6 +231,8 @@ Tomescu et al. 在 \onlinecite{Tomescu.recomb.seq.2013} 的工作的启发,
 
 \newtheorem*{tripart}{3-PARTITION}
 
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
 \begin{tripart}
 \hspace*{1mm}
 
@@ -233,6 +245,8 @@ Tomescu et al. 在 \onlinecite{Tomescu.recomb.seq.2013} 的工作的启发,
 对所有的 $1 \leq i \leq w$, $\sum_{x \in X_i} u(x) = Y$ 
 (注意到每个 $X_i$ 必须包含恰好 3 个来自 $X$ 的元素)?
 \end{tripart}
+}}
+\end{center}
 
 根据 Garey 和 Johnson 在 \onlinecite{doi:10.1137/0204035} 中以及 
 Garey 和 Johnson 在 \onlinecite{Garey:1990:CIG:574848} 的工作, 
@@ -251,7 +265,9 @@ Garey 和 Johnson 在 \onlinecite{Garey:1990:CIG:574848} 的工作,
 \begin{figure}[!t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/nphard/part3-gene.pdf}
-\caption{一个 3-PARTITION 实例对应的 M-ISOFORM 实例的构造的基因}
+\caption[一个 3-PARTITION 实例对应的 M-ISOFORM 实例的构造的基因]
+{一个 3-PARTITION 实例对应的 M-ISOFORM 实例的构造的基因: 
+这里每一个外显子的长度均为 $k-1$ bp ($k\geq 2$ 是一个固定的常数)。}
 \label{tripart-reduce-gene}
 \end{figure}
 
@@ -278,8 +294,9 @@ Garey 和 Johnson 在 \onlinecite{Garey:1990:CIG:574848} 的工作,
 对于图 \ref{tripart-reduce-gene} 中的所有的读段起始位置, 采样率均为 $1$。 
 
 在此我们有了对应该 3-PARTITION 的实例的一个 M-ISOFORM 实例, 并且我们有一个如下的问题: 
-\begin{itemize}
-\item 是否存在一个剪切异构体的集合 $I$, $|I| \leq 3w$, 
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
+是否存在一个剪切异构体的集合 $I$, $|I| \leq 3w$, 
 以及这些转录本的表达量 $\lambda_i \geq 0$, $i \in I$, 
 使得式 \eqref{rna-seq-data-poisson-likelihood} 中的似然函数
 \begin{align}
@@ -288,7 +305,8 @@ L(R) &= \prod_{p\in P} \frac{{\lambda_p}^{N(p)} e^{-\lambda_p}}{N(p)!} \nonumber
 &\geq \prod_{p\in P} \frac{{N(p)}^{N(p)} e^{-N(p)}}{N(p)!}
 \end{align}
 (这里所使用的阈值是 $\prod_{p\in P} \frac{{N(p)}^{N(p)} e^{-N(p)}}{N(p)!}$。)
-\end{itemize}
+}}
+\end{center}
 
 注意到, 前面对于给定的 3-PARTITION 实例构造这一个 M-ISOFORM 实例是在多项式时间之内完成的。 
 下面我们说明给出的 3-PARTITION 有解当且仅当我们构造的着一个 M-ISOFORM 实例是有解的。 

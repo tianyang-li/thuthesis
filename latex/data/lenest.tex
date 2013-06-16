@@ -20,14 +20,14 @@
 \section{理论分析}
 在通过 RNA-Seq 数据估计转录本的时候我们对 RNA-Seq 数据做如下的假设以简化模型: 
 \begin{itemize}
-\item 所有的读段在原转录本上的位置的分布都是独立的 
+\item 所有的读段在原转录本上的位置的分布都是独立的。 
 
 \item 读段的 5' 段位置 (以下称之为起始位置) 在原转录本上的分布是均匀的。 
-同样的, 读段的 3' 段位置 (以下称之为终止位置) 在原转录本上的分布也是均匀的 
+同样的, 读段的 3' 段位置 (以下称之为终止位置) 在原转录本上的分布也是均匀的。 
 \end{itemize}
 此处为了方便我们的讨论, 我们还假设: 
 \begin{itemize}
-\item 所有的读段的长度都是相同的, 为 $R$ bp 长
+\item 所有的读段的长度都是相同的, 为 $R$ bp 长。
 \end{itemize}
 
 为了在基因组参考序列没有基因注释, 甚至于没有基因组参考序列, 
@@ -118,10 +118,10 @@ P(X_{(N)} = i) = \frac{ i^N - (i - 1)^N }{L^N}
 
 由以上的分析我们知道: 
 \begin{itemize}
-\item $X_{(N)}$ 是一个充分统计量
-\item $X_{(N)}$ 是一个完全统计量
+\item $X_{(N)}$ 是一个充分统计量。
+\item $X_{(N)}$ 是一个完全统计量。
 \item 定理 \ref{len-est-thm-one-end} 中给出的估计 $\hat{L}$ 
-(式 \eqref{len-est-thm-on-end-eq}) 对于此处的分布的参数 $L$ 的估计是无偏的 
+(式 \eqref{len-est-thm-on-end-eq}) 对于此处的分布的参数 $L$ 的估计是无偏的。
 \end{itemize}
 从而根据 Lehmann-Scheff{\'e} 定理
 \cite{lehmann2012completeness.p1, lehmann2012completeness.p2} 
@@ -372,9 +372,7 @@ $\lambda$ 之间有明显的关系。
     \end{subfigure}
 
 
-\caption[估计的转录本长度和真实的转录本长度之比 
-($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 
-和测序 $\lambda$ 
+\caption[估计的转录本长度和真实的转录本长度之比和测序 $\lambda$ 
 之间的关系]
 {估计的转录本长度和真实的转录本长度之比 
 ($\frac{\text{估计的转录本长度}}{\text{真实的转录本长度}}$) 
