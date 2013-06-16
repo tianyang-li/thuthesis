@@ -70,7 +70,7 @@ RNA-Seq 通常直接用于发现新的剪切异构体
 同时, RNA-Seq 数据还未研究其他生物问题提供了宝贵的原始数据, 
 例如对于生物系统中的网络的研究 \cite{shalek2013single,sinicropi2012whole}。 
 
-为了能够通过 RNA-Seq 数据对生物问题有深入的研究, 
+为了能够通过 RNA-Seq 数据研究生物问题, 
 我们通常会对 RNA-Seq 数据用这些方法进行处理:
 \begin{itemize}
 \item 序列比对 (sequence alignment): 将 RNA-Seq 读段找到其在基因组中的位置。
@@ -142,7 +142,7 @@ Cufflinks 使用一个多项式模型通过最大似然对转录本的表达量�
 \cite{gilbert1978genes, rosenfeld1982calcitonin, early1980two, 
 citeulike:447573, modrek2002genomic}。 
 RNA-Seq 技术的发展大大促进了人们对于真核生物中选择性剪切的认识, 
-因为 RNA-Seq 数据可以较好地表现出来真核生物中的选择性剪切的现象。 
+因为 RNA-Seq 数据中的经过剪切位点的读段可以直接反应真核生物中的选择性剪切的现象。 
 目前在真核生物相关的 RNA-Seq 实验中通常使用的用于辨识同一个基因的剪切异构体的工具是 
 Cufflinks \cite{cufflinks.2010} (图 \ref{intro-cufflinks-assembly})。
 
@@ -152,7 +152,7 @@ Cufflinks \cite{cufflinks.2010} (图 \ref{intro-cufflinks-assembly})。
 \caption[Cufflinks 序列拼装策略和对同一个基因的剪切异构体的辨识 \cite{cufflinks.2010}]
 {Cufflinks 序列拼装策略和对同一个基因的剪切异构体的辨识 \cite{cufflinks.2010}: 
 Cufflinks 拼装序列时使用的是 OLC 策略。
-另外，Cufflinks 通过在读段位置关系构成的图中寻找一个最小路径覆盖来辨识一个基因的剪切异构体。}
+另外，Cufflinks 通过在读段位置关系构成的图中寻找一个最小路径覆盖辨识一个基因的剪切异构体。}
 \label{intro-cufflinks-assembly}
 \end{figure}
 
@@ -188,7 +188,7 @@ $I = \bigcup_{g \in G} I_g$ 是所有的剪切异构体所构成的集合。
 对于给定的一个剪切异构体 $i$, 
 $\sum_{p \in \{ \text{所有读段起始位置} \}} q(p, i) = 1$。
 对于处理实际 RNA-Seq 数据中遇到的读段分布不均匀的问题我们可以通过调整 $q(p,i)$ 
-以改进方法的准确性 \cite{roberts2011improving}。
+以改进该方法的准确性 \cite{roberts2011improving}。
 
 \item 当给定一个剪切异构体 $i$ 和它上面一个读段的起始位置 $p$ 时, 
 $q(p, i)$ 是已知的。
@@ -249,7 +249,9 @@ Cufflinks 通过在读段之间定义一个序,
 \label{intro-nsmap-cem-ireckon-montebllo}
 
 NSMAP, CEM, iReckon, 和 Montebello 这 4 个工具是同时进行剪切异构体的辨识和转录本表达量的估计的。 
-由于一个基因可能的剪切异构体的个数相当的多, NSMAP, CEM, iReckon, 和 Montebello 
+由于一个基因可能的剪切异构体的个数是随它的外显子的个数的增长按指数规律增长的, 
+一个基因有大量可能的剪切异构体, 
+NSMAP, CEM, iReckon, 和 Montebello 
 采用了带惩罚项的似然函数进行剪切异构体的辨识和转录本表达量的估计。 
 其具体做法是对式 \eqref{rna-seq-general-likelihood} 中的似然函数增加一个惩罚项, 
 变为求剪切异构体的集合 $I$ 和它们的表达量 $\theta_I$ 使得
@@ -289,7 +291,8 @@ $\epsilon$ 是一个期望 $\operatorname[E] = 0$ 的噪声。
 IsoLasso 和 SLIDE 对目前转录组中所有的基因所包含的外显子进行类似 
 式 \eqref{outline-isolasso-slide} 中的处理, 通过线性回归估计每一个剪切异构体的表达量。 
 注意到通过该方法计算得的表达量值和用 RPKM 单位表达的表达量是成正比的。 
-由于一个基因可能的剪切异构体的个数相当的多, 
+由于一个基因可能的剪切异构体的个数是随它的外显子的个数的增长按指数规律增长的, 
+一个基因有大量可能的剪切异构体, 
 在线性回归时 IsoLasso 和 SLIDE 均采用了 Lasso \cite{tibshirani1996regression} 用于正则化。 
 与 \ref{intro-nsmap-cem-ireckon-montebllo} 中介绍的 NSMAP, CEM, 和 iReckon 类似, 
 IsoLasso 和 SLIDE 在计算时采用的策略均是枚举所有剪切异构体集合 $I$ 中的可能的剪切异构体。 
