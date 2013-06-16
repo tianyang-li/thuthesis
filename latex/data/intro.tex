@@ -113,7 +113,7 @@ de Bruijn 图策略 (图 \ref{intro-trinity-assembly})。
 \includegraphics[width=\textwidth]{figures/trinity-assembly.jpg}
 \caption[Trinity 拼装策略 \cite{grabherr2011full}]
 {Trinity 拼装策略 \cite{grabherr2011full}: Trinity 拼装序列时使用的是 
-de Bruijn 图策略}
+de Bruijn 图策略, 通过链接有 $k-1$ bp 重叠的 $k$-mer 将短序列拼接成更长的序列。}
 \label{intro-trinity-assembly}
 \end{figure}
 
@@ -133,7 +133,7 @@ Cufflinks \cite{cufflinks.2010} (图 \ref{intro-cufflinks-abundance})
 \includegraphics[height=0.5\textheight]{figures/cufflinks-abundance.jpg}
 \caption[Cufflinks 对转录本的表达量的估计 \cite{cufflinks.2010}]
 {Cufflinks 对转录本的表达量的估计 \cite{cufflinks.2010}: 
-Cufflinks 使用一个多项式模型通过最大似然对转录本的表达量进行估计}
+Cufflinks 使用一个多项式模型通过最大似然对转录本的表达量进行估计。}
 \label{intro-cufflinks-abundance}
 \end{figure}
 
@@ -296,11 +296,25 @@ IsoLasso 和 SLIDE 在计算时采用的策略均是枚举所有剪切异构体�
 由于一个基因可能的剪切异构体的个数是随它的外显子的个数的增长按指数规律增长的, 
 所以 IsoLasso 和 SLIDE 在计算时无法处理外显子较多的基因。 
 
+\section{本文内容介绍}
+本文提出了一个通过 RNA-Seq 数据估计转录本长度的统计方法。 
+同时, 本文对于 RNA-Seq 数据中读段分布的不均匀性进行了初步的分析。 
+此外, 本文证明了使用真核生物 RNA-Seq 数据通过最大似然辨识基因的剪切异构体是一个 NP 难问题。
 
+\subsection{通过 RNA-Seq 数据估计转录本的长度}
+在通过 RNA-Seq 数据估计估计转录本的表达量时, 
+我们需要通过每个转录本的长度对该转录本上的读段个数进行归一化 
+\cite{mortazavi2008mapping, Jiang15042009, cufflinks.2010}。
+在没有基因组参考序列的情况下, 我们需要一种方法从 RNA-Seq 数据中得知转录本的长度。
+此处我们提出一个通过 RNA-Seq 数据估计转录本长度的统计方法。
+当我们假设 RNA-Seq 读段在转录本上的位置的分布是均匀时, 
+我们的方法给出的转录本长度的估计是无偏的。
 
-
-
-
+\subsection{使用真核生物 RNA-Seq 数据通过最大似然辨识基因的剪切异构体是一个 NP 难问题}
+在真核生物中一个基因会有多个外显子, 这些外显子不同的组合会产生多个不同的剪切异构体。
+通过 RNA-Seq 数据可以对每个基因的不同的剪切异构体进行辨识。
+现有的方法 (IsoLasso, CEM, 和 SLIDE 等) 都注意到辨识剪切异构体时会需要大量的计算资源。
+此处我们证明使用真核生物 RNA-Seq 数据通过最大似然辨识基因的剪切异构体是一个 NP 难问题。
 
 
 

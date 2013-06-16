@@ -4,9 +4,7 @@
 \section{问题描述}
 在真核生物 RNA-Seq 数据处理过程当中, 重要的一步是通过 RNA-Seq 数据估计出基因的转录组。 
 由于在真核生物的转录过程当中会有选择性剪切的现象发生, 一个基因可能转录出多个剪切异构体。 
-在这种情况下, 我们需要通过 RNA-Seq 数据估计出转录本的组成。 
-在这里我们首先对通过真核生物 RNA-Seq 数据估计基因的转录组的问题, 
-亦即对基因的剪切异构体的辨识, 进行描述。 
+在这种情况下, 我们需要通过 RNA-Seq 数据辨识出基因的不同的剪切异构体。 
 
 在 RNA-Seq 实验中得到的读段数据在比对到参考基因组序列上如图 \ref{nphard.ex1.aligned.data} 所示. 
 对于 RNA-Seq 数据, 
@@ -40,7 +38,7 @@ RNA-Seq 数据通过 Trinity \cite{grabherr2011full} 拼装得到的剪切图:
 \subsection{模型}
 \label{nphard-model}
 
-为了能够通过 RNA-Seq 数据估计出转录组中转录本的组成, 辨识每个基因的剪切异构体, 
+为了能够通过 RNA-Seq 数据辨识每个基因的剪切异构体, 
 我们在这里介绍一个 Poisson 模型用来描述 RNA-Seq 数据 \cite{Jiang15042009}。 
 该模型与 \ref{rna-seq-general-model} 中所介绍的多项式模型在数学上是等价的 
 \cite{2011arXiv1104.3889P}。 
