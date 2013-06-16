@@ -15,7 +15,7 @@
 如果不采用更加复杂的技术, 如 RNA-PET \cite{Fullwood01042009} 技术, 
 则需要通过 RNA-Seq 数据估计出转录本的长度。 对于现有的大部分 RNA-Seq 数据, 
 仍然没有对应的 RNA-PET 数据用语确定各转录本的 5' 和 3' 段。 
-所以对于通过 RNA-Seq 数据直接估计转录本的长度是有需求的。 
+我们此处给出的方法可以通过现有的 RNA-Seq 数据估计转录本的长度。
 
 \section{理论分析}
 在通过 RNA-Seq 数据估计转录本的时候我们对 RNA-Seq 数据做如下的假设以简化模型: 
@@ -40,6 +40,8 @@
 
 \nocite{casella2002statistical} 
 
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
 \begin{thm}
 \label{len-est-thm-one-end}
 假设 $X_1$, $X_2$, \ldots, $X_N$ 是来自定义在 
@@ -58,9 +60,11 @@ P(X = i) =  \begin{cases}
 \end{equation}
 其中 $X_{(N)} = \max_{1 \leq i \leq N} X_i$。 
 \end{thm}
+}}
+\end{center}
 
 通过定理 \ref{len-est-thm-one-end} 我们可以在已知转录本上一个固定的位点 
-(例如外显子出现剪切现象的边界), 根据读段的起始位置 (或者终止位置), 
+(例如通过读段得到的剪切位点), 根据读段的起始位置 (或者终止位置), 
 估计出着一个位于转录本上的固定的位点到转录本的一端的序列的长度, 
 从而能够估计出转录本的长度。 
 
@@ -130,6 +134,8 @@ P(X_{(N)} = i) = \frac{ i^N - (i - 1)^N }{L^N}
 
 \end{proof}
 
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
 \begin{thm}
 \label{len-est-thm-2-ends}
 假设$X_1$, $X_2$, \ldots, $X_N$ 是来自定义在 
@@ -148,6 +154,8 @@ P(X = i) =  \begin{cases}
 \end{equation}
 其中 $D = \max_{1 \leq i \leq N} X_i - \min_{1 \leq i \leq N} X_i +1$。 
 \end{thm}
+}}
+\end{center}
 
 通过定理 \ref{len-est-thm-2-ends} 我们可以在转录本上无法找到一个固定的位点时, 
 通过 RNA-Seq 数据对转录本的长度进行估计。 
@@ -179,9 +187,10 @@ P(D=i) = (L-D +1) \frac{ D^N - 2 (D-1)^N  + (\max(D-2,0))^N}{ L^N }
 中挑选出覆盖原先转录本部分较多 (例如该连续段是该转录本唯一的一个连续段) 的连续段。 
 因为在没有参考基因组序列的情况下, 若要认为一个连续段代表原基因, 
 则必须要求该连续段覆盖了原转录本的大部分的区域。 
-如果一个转录本的测序深度偏低, 覆盖低, 
-则通过测序的结果我们可能看到这个转录本会拥有多个连续段, 
-这样的情况在没有参考序列时是几乎无法分析的。
+如果一个转录本的测序深度偏低、覆盖低, 
+则通过测序的结果我们可能看到这个转录本会拥有多个连续段。 
+在没有参考序列时的情况下由于无法知道来自同一个转录本的多个连续段之间的关系, 
+这样的连续段几乎是无法分析的。
 
 下面我们给出我们对于选择 ``覆盖原转录本较多'' 的连续段的一种思路。
 
@@ -240,14 +249,18 @@ p_{n+R} &= \sum_{i=1}^{R-1} (1-e^{-\lambda}) e^{-(R-1-i)\lambda} p_{n+i} & n &\g
 原先的 Lander-Waterman 公式 \cite{lander1988genomic} 在推导中使用了一些近似, 
 在这里我们不使用 Lander 和 Waterman 在 \onlinecite{lander1988genomic} 中所使用的近似。 
 
+\begin{center}
+\fbox{\parbox{0.8\textwidth}{
 \begin{thm}[改进的 Lander-Waterman 公式]
 \label{discrete-lander-waterman-thm}
-在之前的 Poisson 模型下, 一个连续段的期望的长度
+在上述的 Poisson 模型下, 一个连续段的期望的长度
 \begin{equation}
 \label{discrete-lander-waterman-formula}
 \operatorname{E}[\text{一个连续段的长度}] = \frac{e^{R\lambda} - 1}{e^\lambda - 1} 
 \end{equation}
 \end{thm}
+}}
+\end{center}
 
 下面我们给出定理 \ref{discrete-lander-waterman-thm} 的证明。 
 
@@ -324,7 +337,8 @@ P(N_D=j) = (1-q)^{R-1}(1-(1-q)^{R-1})^{j},\ j=0,1,\ldots
 \end{align}
 
 在有了式 \eqref{lenest-one-contig-one-isof-prob-est} 中的近似估计之后, 
-我们可以在没有参考基因组序列的情况下挑选出来拼装结果中那些可能是大部分覆盖原转录本的那些连续段, 
+我们可以在没有参考基因组序列的情况下挑选出来拼装结果中那些可能是 
+``大部分覆盖原转录本'' 的那些连续段, 
 对这些连续段的长度通过前面定理 \ref{len-est-thm-one-end} 和定理 
 \ref{len-est-thm-2-ends} 中所述的方法进行估计, 
 从而进一步估计得这些连续段所对应的转录本的表达量。 
