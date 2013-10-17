@@ -1,3 +1,7 @@
+**下面的东西都不是我写的**
+
+***
+
 # What's it?
 ThuThesis为**T**sing**hu**a University **Thesis** LaTeX Template之缩写。
 
